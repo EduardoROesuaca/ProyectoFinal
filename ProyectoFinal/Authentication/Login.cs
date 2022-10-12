@@ -77,5 +77,10 @@ namespace ProyectoFinal
                 txtPassword.Text = "";
             }
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+           //Logica del login
+        }
     }
 }
