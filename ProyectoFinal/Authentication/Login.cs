@@ -80,9 +80,10 @@ namespace ProyectoFinal
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            //APLICAR LOGICA DEL LOGIN
             Home home = new Home();
             home.Show();
-            this.Close();
+            this.Hide();
         }
     }
 }

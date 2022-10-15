@@ -34,7 +34,7 @@ namespace ProyectoFinal.Common
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             //REGISTRAR LOG CUANDO SE IMPLEMENTE
-            //Application.Exit();
+            Application.Exit();
         }
 
     }
