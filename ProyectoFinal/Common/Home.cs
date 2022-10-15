@@ -20,5 +20,22 @@ namespace ProyectoFinal.Common
         private void Home_Load(object sender, EventArgs e)
         {
         }
+
+        private void PBClose_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PBMin_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            //REGISTRAR LOG CUANDO SE IMPLEMENTE
+            //Application.Exit();
+        }
+
     }
 }
