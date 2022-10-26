@@ -172,6 +172,11 @@ namespace ProyectoFinal
                             else
                             {
                                 MessageBox.Show("Usuario no registrado", "ATENCIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                txtPassword.Text = "Contraseña";
+                                txtPassword.PasswordChar = '\0';
+                                txtUserName.Text = "";
+                                txtUserName.Focus();
+
                             }
 
                         }
