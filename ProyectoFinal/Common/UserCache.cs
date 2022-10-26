@@ -11,9 +11,9 @@ namespace ProyectoFinal.Common
         #region Props
         public static int UserID { set; get; }
         public static int RoleID { get; set; }
+        public static String UserName { get; set; }
         public static String Name { get; set; }
         public static String LastName { get; set; }
-        public static String Password { get; set; }
         public static String Email { get; set; }
         public static String Mobile { get; set; }
         public static bool isLockedOut { get; set; }
