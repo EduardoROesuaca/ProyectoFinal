@@ -38,21 +38,6 @@ namespace ProyectoFinal
             txtPagoDol.Text = "0";
             txtPagoTC.Text = "0";   
             txtVuelto.Text = "0";
-
-            lblName.Text = UserCache.Name;
-            if (UserCache.RoleID == 1)
-            {
-                lblRol.Text = "Cajero";
-            }
-            else if (UserCache.RoleID == 2)
-            {
-                lblRol.Text = "Vendedor";
-            }
-            else
-            {
-                lblRol.Text = "Administrador de Sistema";
-            }
-
         }
 
         private void PBMin_Click(object sender, EventArgs e)

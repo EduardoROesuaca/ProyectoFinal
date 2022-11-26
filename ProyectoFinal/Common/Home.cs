@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Devices;
+using ProyectoFinal.Administration_Module;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,11 +15,24 @@ namespace ProyectoFinal.Common
 {
     public partial class Home : Form
     {
+        #region Props
         String strConexion;
+        bool Move = false;
+        int mx, my;
+        #endregion
+
+        #region MDIChilds
+        ExportLogs ExportLogsForm;
+        SalesReports SalesReportForm;
+        InvoicingModule InvoicingForm;
+
+        #endregion
         public Home()
         {
             InitializeComponent();
-            this.strConexion = "Data Source=DESKTOP-ASF7EIQ\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";
+            //cadenas de conexion de ambos servidores, no eliminar, solamente comentar la que no se requiere
+            //this.strConexion = "Data Source=DESKTOP-ASF7EIQ\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True"; //GERALDO
+            this.strConexion = "Data Source=DESKTOP-KQNBJVI\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";   //EDUARDO
         }
 
         private void Home_Load(object sender, EventArgs e)
@@ -88,9 +103,68 @@ namespace ProyectoFinal.Common
 
         private void btnInvoicingModule_Click(object sender, EventArgs e)
         {
-            InvoicingModule invoicing = new InvoicingModule();
-            invoicing.Show();
-            this.Hide();
+            if (this.InvoicingForm != null)
+            {
+                this.InvoicingForm.BringToFront();
+            }
+            else
+            {
+                this.InvoicingForm = new InvoicingModule();
+                this.InvoicingForm.TopLevel = false;
+                this.plnContainer.Controls.Add(InvoicingForm);
+                this.InvoicingForm.Show();
+            }
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            if (this.ExportLogsForm != null)
+            {
+                this.ExportLogsForm.BringToFront();
+            }
+            else{
+                this.ExportLogsForm = new ExportLogs();
+                this.ExportLogsForm.TopLevel = false;
+                this.plnContainer.Controls.Add(ExportLogsForm);
+                this.ExportLogsForm.Show();
+            }
+        }
+
+        private void plnHeader_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.Move = true;
+            this.mx = e.X;
+            this.my = e.Y;
+        }
+
+        private void plnHeader_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (this.Move)
+            {
+                this.Left = this.Left + (e.X - mx); this.Top = this.Top + (e.Y - my);
+            }
+        }
+
+        private void btnSysAdmin_Click(object sender, EventArgs e)
+        {
+            if (this.SalesReportForm != null)
+            {
+                this.SalesReportForm.BringToFront();
+            }
+            else
+            {
+                this.SalesReportForm = new SalesReports();
+                this.SalesReportForm.TopLevel = false;
+                this.plnContainer.Controls.Add(SalesReportForm);
+                this.SalesReportForm.Show();
+            }
+        }
+
+        private void plnHeader_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.Move = false;
+            this.my = 0;
+            this.mx = 0;
         }
     }
 }
