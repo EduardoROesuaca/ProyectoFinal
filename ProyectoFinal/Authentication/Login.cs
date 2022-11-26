@@ -24,7 +24,7 @@ namespace ProyectoFinal
         public Login()
         {
             InitializeComponent();
-            this.strConexion = "Data Source=DESKTOP-KQNBJVI\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";
+            this.strConexion = "Data Source=DESKTOP-ASF7EIQ\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";
         }
         private void Login_Load(object sender, EventArgs e)
         {
@@ -182,6 +182,11 @@ namespace ProyectoFinal
             {
                 MessageBox.Show("Maximo numero de intentos, intentelo nuevamente mas tarde!", "ATENCIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void plnContainer_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

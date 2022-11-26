@@ -17,7 +17,7 @@ namespace ProyectoFinal.Common
         public Home()
         {
             InitializeComponent();
-            this.strConexion = "Data Source=DESKTOP-KQNBJVI\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";
+            this.strConexion = "Data Source=DESKTOP-ASF7EIQ\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";
         }
 
         private void Home_Load(object sender, EventArgs e)
@@ -84,6 +84,13 @@ namespace ProyectoFinal.Common
         private void plnMenu_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnInvoicingModule_Click(object sender, EventArgs e)
+        {
+            InvoicingModule invoicing = new InvoicingModule();
+            invoicing.Show();
+            this.Hide();
         }
     }
 }

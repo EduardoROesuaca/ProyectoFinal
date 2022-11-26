@@ -1,20 +1,305 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Microsoft.VisualBasic;
+using ProyectoFinal.Common;
+using ProyectoFinal.Invoicing_Module;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Windows.Forms;
+
 
 namespace ProyectoFinal
 {
     public partial class InvoicingModule : Form
     {
+        String strConexion;
+        public static int contFila = 0;
+        public static double total = 0;
+        public static double pagoCol = 0;
+        public static double pagoDol = 0;
+        public static double pagoTC = 0;
+        public static double vuelto = 0;
+
         public InvoicingModule()
         {
             InitializeComponent();
+            this.strConexion = "Data Source=DESKTOP-ASF7EIQ\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            Home home = new Home();
+            home.Show();
+            this.Hide();
+        }
+
+        private void InvoicingModule_Load(object sender, EventArgs e)
+        {
+            txtPagoCol.Text = "0";
+            txtPagoDol.Text = "0";
+            txtPagoTC.Text = "0";   
+            txtVuelto.Text = "0";
+
+            lblName.Text = UserCache.Name;
+            if (UserCache.RoleID == 1)
+            {
+                lblRol.Text = "Cajero";
+            }
+            else if (UserCache.RoleID == 2)
+            {
+                lblRol.Text = "Vendedor";
+            }
+            else
+            {
+                lblRol.Text = "Administrador de Sistema";
+            }
+
+        }
+
+        private void PBMin_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(strConexion);
+                using (SqlCommand cmd = new SqlCommand("SP_InfoProd", connection))
+                {
+                    connection.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ProductID", txtBuscarProdID.Text.Trim());
+                    SqlDataReader read = cmd.ExecuteReader();
+                    DataTable tabla = new DataTable();
+                    tabla.Load(read);
+                    if (tabla.Rows.Count > 0)
+                    {
+                        UserCache.ProductoID = (int)tabla.Rows[0]["ProductId"];
+                        UserCache.CategoriaID = (int)tabla.Rows[0]["CategoryId"];
+                        UserCache.ProductName = tabla.Rows[0]["Name"].ToString();
+                        UserCache.Price = (decimal)tabla.Rows[0]["Price"];
+                        UserCache.CantidadProd = (int)tabla.Rows[0]["QtyAvail"];
+
+                        lblVistaPrevia.Text = UserCache.ProductName;
+                    }
+                    else
+                    {
+                        lblVistaPrevia.Text = "ID no existe en Base de Datos";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Se ha presentado un error: "+ ex);
+            }
+        }
+
+        
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            bool existe = false;   
+            int numFila = 0;
+            double iva = 0;
+            double subtotal = 0;
+            if ((Convert.ToDouble(UserCache.CantidadProd) > Double.Parse(txtCantidadProd.Text)) && (Double.Parse(txtCantidadProd.Text)>0))
+            {
+                if (contFila == 0)
+                {
+                    dataFacturacion.Rows.Add(UserCache.ProductoID.ToString(), UserCache.ProductName.ToString(),
+                        UserCache.CategoriaID.ToString(), UserCache.Price.ToString(), txtCantidadProd.Text);
+                    if (UserCache.CategoriaID.ToString() == "1")
+                    {
+
+                        subtotal = Convert.ToDouble(dataFacturacion.Rows[contFila].Cells[3].Value) *
+                                    Convert.ToDouble(dataFacturacion.Rows[contFila].Cells[4].Value);
+                        iva = subtotal * 0.13;
+                        subtotal += iva;
+                        dataFacturacion.Rows[contFila].Cells[5].Value = iva;
+                        dataFacturacion.Rows[contFila].Cells[6].Value = subtotal;
+                        txtBuscarProdID.Text = "";
+                        txtCantidadProd.Text = "";
+                        lblVistaPrevia.Text = "";
+                        contFila++;
+                    }
+                    if (UserCache.CategoriaID.ToString() == "2")
+                    {
+                        subtotal = Convert.ToDouble(dataFacturacion.Rows[contFila].Cells[3].Value) *
+                                    Convert.ToDouble(dataFacturacion.Rows[contFila].Cells[4].Value);
+                        iva = subtotal * 0.02;
+                        subtotal += iva;
+                        dataFacturacion.Rows[contFila].Cells[5].Value = iva;
+                        dataFacturacion.Rows[contFila].Cells[6].Value = subtotal;
+                        txtBuscarProdID.Text = "";
+                        txtCantidadProd.Text = "";
+                        lblVistaPrevia.Text = "";
+                        contFila++;
+
+                    }
+                }
+                else
+                {
+                    foreach (DataGridViewRow Fila in dataFacturacion.Rows)
+                    {
+
+                        if (Fila.Cells[0].Value.ToString() == txtBuscarProdID.Text)
+                        {
+                            existe = true;
+                            numFila = Fila.Index;
+                        }
+                    }
+
+                    if (existe == true)
+                    {
+                        dataFacturacion.Rows[numFila].Cells[4].Value = (Convert.ToDouble(txtCantidadProd.Text) +
+                            Convert.ToDouble(dataFacturacion.Rows[numFila].Cells[4].Value)).ToString();
+
+                        if (UserCache.CategoriaID.ToString() == "1")
+                        {
+
+                            subtotal = Convert.ToDouble(dataFacturacion.Rows[numFila].Cells[3].Value) *
+                                        Convert.ToDouble(dataFacturacion.Rows[numFila].Cells[4].Value);
+                            iva = subtotal * 0.13;
+                            subtotal += iva;
+                            dataFacturacion.Rows[numFila].Cells[5].Value = iva;
+                            dataFacturacion.Rows[numFila].Cells[6].Value = subtotal;
+                            txtBuscarProdID.Text = "";
+                            txtCantidadProd.Text = "";
+                            lblVistaPrevia.Text = "";
+                            contFila++;
+                        }
+
+                        if (UserCache.CategoriaID.ToString() == "2")
+                        {
+
+                            subtotal = Convert.ToDouble(dataFacturacion.Rows[numFila].Cells[3].Value) *
+                                        Convert.ToDouble(dataFacturacion.Rows[numFila].Cells[4].Value);
+                            iva = subtotal * 0.02;
+                            subtotal += iva;
+                            dataFacturacion.Rows[numFila].Cells[5].Value = iva;
+                            dataFacturacion.Rows[numFila].Cells[6].Value = subtotal;
+                            txtBuscarProdID.Text = "";
+                            txtCantidadProd.Text = "";
+                            lblVistaPrevia.Text = "";
+                            contFila++;
+                        }
+                    }
+                    else
+                    {
+                        dataFacturacion.Rows.Add(UserCache.ProductoID.ToString(), UserCache.ProductName.ToString(),
+                                            UserCache.CategoriaID.ToString(), UserCache.Price.ToString(), txtCantidadProd.Text);
+                        if (UserCache.CategoriaID.ToString() == "1")
+                        {
+
+                            subtotal = Convert.ToDouble(dataFacturacion.Rows[contFila].Cells[3].Value) *
+                                        Convert.ToDouble(dataFacturacion.Rows[contFila].Cells[4].Value);
+                            iva = subtotal * 0.13;
+                            subtotal += iva;
+                            dataFacturacion.Rows[contFila].Cells[5].Value = iva;
+                            dataFacturacion.Rows[contFila].Cells[6].Value = subtotal;
+                            txtBuscarProdID.Text = "";
+                            txtCantidadProd.Text = "";
+                            lblVistaPrevia.Text = "";
+                            contFila++;
+                        }
+                        if (UserCache.CategoriaID.ToString() == "2")
+                        {
+                            subtotal = Convert.ToDouble(dataFacturacion.Rows[contFila].Cells[3].Value) *
+                                        Convert.ToDouble(dataFacturacion.Rows[contFila].Cells[4].Value);
+                            iva = subtotal * 0.02;
+                            subtotal += iva;
+                            dataFacturacion.Rows[contFila].Cells[5].Value = iva;
+                            dataFacturacion.Rows[contFila].Cells[6].Value = subtotal;
+                            txtBuscarProdID.Text = "";
+                            txtCantidadProd.Text = "";
+                            lblVistaPrevia.Text = "";
+                            contFila++;
+
+                        }
+                    }
+                }
+                total = 0;
+                foreach (DataGridViewRow Fila in dataFacturacion.Rows)
+                {
+                    total += Convert.ToDouble(Fila.Cells[6].Value);
+                }
+                txtTotalColones.Text = total.ToString();
+                txtTotalDolares.Text = (total / 620).ToString("0.##");
+                Cambio();
+            }
+            else
+            {
+                MessageBox.Show("Cantidad no disponible");
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (contFila > 0)
+            {
+                total = total - (Convert.ToDouble(dataFacturacion.Rows[dataFacturacion.CurrentRow.Index].Cells[6].Value));
+                txtTotalColones.Text = total.ToString();
+                txtTotalDolares.Text = (total / 620).ToString("0.##");
+                dataFacturacion.Rows.RemoveAt(dataFacturacion.CurrentRow.Index);
+                contFila--;
+                Cambio();
+            }
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            Nuevo();
+        }
+
+        public void Nuevo() {
+            txtTotalColones.Text = "0";
+            txtTotalDolares.Text = "0";
+            txtVuelto.Text = "0";
+            txtPagoCol.Text = "0";
+            txtPagoDol.Text = "0";
+            txtPagoTC.Text = "0";
+            dataFacturacion.Rows.Clear();
+            txtBuscarProdID.Focus();
+            contFila = 0;
+        }
+
+        public void Cambio() { 
+            pagoCol = Double.Parse(txtPagoCol.Text);    
+            pagoDol = Double.Parse(txtPagoDol.Text);
+            pagoTC = Double.Parse(txtPagoTC.Text);
+            vuelto = (pagoCol+pagoTC+(pagoDol*610)) - total;
+            txtVuelto.Text = vuelto.ToString();
+        
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (vuelto >= 0)
+            {
+                foreach (DataGridViewRow Fila in dataFacturacion.Rows)
+                {
+                    if (Fila.Cells[2].Value.ToString() == "2")
+                    {
+                        PassVal PassAdm = new PassVal();
+                        PassAdm.ShowDialog();
+                        Nuevo();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("La casilla vuelto debe estar en cero");
+            }
+        }
+
+        private void bntPagar_Click(object sender, EventArgs e)
+        {
+            Cambio();
+        }
+
+        private void btnBuscarNombre_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

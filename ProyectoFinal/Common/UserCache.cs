@@ -8,7 +8,7 @@ namespace ProyectoFinal.Common
 {
     internal static class UserCache
     {
-        #region Props
+        #region Props Usuario
         public static int UserID { set; get; }
         public static int RoleID { get; set; }
         public static String UserName { get; set; }
@@ -20,6 +20,15 @@ namespace ProyectoFinal.Common
         public static DateTime CreateDate { get; set; }
         public static DateTime LastActivityDate { get; set; }
         public static int FailedPasswordAttemptCount { get; set; }
+        #endregion
+
+
+        #region Props Producto
+        public static int ProductoID { set; get; }
+        public static int CategoriaID { get; set; }
+        public static String ProductName { get; set; }
+        public static decimal Price { get; set; }
+        public static int CantidadProd { get; set; }
         #endregion
     }
 }

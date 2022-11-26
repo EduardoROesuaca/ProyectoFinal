@@ -52,7 +52,7 @@
             this.plnImg.Location = new System.Drawing.Point(0, 0);
             this.plnImg.Name = "plnImg";
             this.plnImg.Size = new System.Drawing.Size(290, 461);
-            this.plnImg.TabIndex = 0;
+            this.plnImg.TabIndex = 3;
             this.plnImg.Paint += new System.Windows.Forms.PaintEventHandler(this.plnImg_Paint);
             // 
             // PB
@@ -77,7 +77,8 @@
             this.plnContainer.Location = new System.Drawing.Point(290, 0);
             this.plnContainer.Name = "plnContainer";
             this.plnContainer.Size = new System.Drawing.Size(494, 461);
-            this.plnContainer.TabIndex = 1;
+            this.plnContainer.TabIndex = 4;
+            this.plnContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.plnContainer_Paint);
             // 
             // PBMin
             // 
@@ -113,7 +114,7 @@
             this.btnLogin.Location = new System.Drawing.Point(105, 317);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(294, 40);
-            this.btnLogin.TabIndex = 5;
+            this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Iniciar Sesión";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -129,7 +130,7 @@
             this.txtPassword.MaxLength = 15;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(294, 24);
-            this.txtPassword.TabIndex = 2;
+            this.txtPassword.TabIndex = 1;
             this.txtPassword.TabStop = false;
             this.txtPassword.Text = "Contraseña";
             this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
@@ -145,7 +146,7 @@
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.ShortcutsEnabled = false;
             this.txtUserName.Size = new System.Drawing.Size(294, 24);
-            this.txtUserName.TabIndex = 1;
+            this.txtUserName.TabIndex = 0;
             this.txtUserName.TabStop = false;
             this.txtUserName.Text = "Nombre de usuario";
             this.txtUserName.Enter += new System.EventHandler(this.txtUserName_Enter);

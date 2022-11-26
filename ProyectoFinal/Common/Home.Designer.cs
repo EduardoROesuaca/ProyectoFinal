@@ -64,7 +64,7 @@
             this.plnMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.plnMenu.Location = new System.Drawing.Point(0, 0);
             this.plnMenu.Name = "plnMenu";
-            this.plnMenu.Size = new System.Drawing.Size(250, 681);
+            this.plnMenu.Size = new System.Drawing.Size(271, 681);
             this.plnMenu.TabIndex = 0;
             this.plnMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.plnMenu_Paint);
             // 
@@ -112,6 +112,7 @@
             this.btnInvoicingModule.TabIndex = 2;
             this.btnInvoicingModule.Text = "Modulo de Facturación";
             this.btnInvoicingModule.UseVisualStyleBackColor = true;
+            this.btnInvoicingModule.Click += new System.EventHandler(this.btnInvoicingModule_Click);
             // 
             // btnLogOut
             // 
@@ -156,15 +157,15 @@
             // 
             this.plnHeader.Controls.Add(this.PBMin);
             this.plnHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.plnHeader.Location = new System.Drawing.Point(250, 0);
+            this.plnHeader.Location = new System.Drawing.Point(271, 0);
             this.plnHeader.Name = "plnHeader";
-            this.plnHeader.Size = new System.Drawing.Size(1014, 30);
+            this.plnHeader.Size = new System.Drawing.Size(993, 30);
             this.plnHeader.TabIndex = 1;
             // 
             // PBMin
             // 
             this.PBMin.Image = global::ProyectoFinal.Properties.Resources.MinIcon;
-            this.PBMin.Location = new System.Drawing.Point(986, 0);
+            this.PBMin.Location = new System.Drawing.Point(956, 3);
             this.PBMin.Name = "PBMin";
             this.PBMin.Size = new System.Drawing.Size(25, 25);
             this.PBMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -202,6 +203,7 @@
             this.Controls.Add(this.plnMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Home";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
             this.Load += new System.EventHandler(this.Home_Load);
             this.plnMenu.ResumeLayout(false);
