@@ -35,18 +35,18 @@
             this.btnPurchasingModule = new System.Windows.Forms.Button();
             this.btnInvoicingModule = new System.Windows.Forms.Button();
             this.btnLogOut = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblRol = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.plnHeader = new System.Windows.Forms.Panel();
-            this.PBMin = new System.Windows.Forms.PictureBox();
             this.plnContainer = new System.Windows.Forms.Panel();
+            this.PBMin = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.plnMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.plnHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PBMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // plnMenu
@@ -67,13 +67,13 @@
             this.plnMenu.Name = "plnMenu";
             this.plnMenu.Size = new System.Drawing.Size(271, 828);
             this.plnMenu.TabIndex = 0;
-            this.plnMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.plnMenu_Paint);
             // 
             // btnReports
             // 
-            this.btnReports.Location = new System.Drawing.Point(23, 444);
+            this.btnReports.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReports.Location = new System.Drawing.Point(12, 444);
             this.btnReports.Name = "btnReports";
-            this.btnReports.Size = new System.Drawing.Size(200, 35);
+            this.btnReports.Size = new System.Drawing.Size(240, 35);
             this.btnReports.TabIndex = 8;
             this.btnReports.Text = "Modulo de Informes";
             this.btnReports.UseVisualStyleBackColor = true;
@@ -81,9 +81,10 @@
             // 
             // btnSysAdmin
             // 
-            this.btnSysAdmin.Location = new System.Drawing.Point(23, 383);
+            this.btnSysAdmin.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSysAdmin.Location = new System.Drawing.Point(12, 383);
             this.btnSysAdmin.Name = "btnSysAdmin";
-            this.btnSysAdmin.Size = new System.Drawing.Size(200, 35);
+            this.btnSysAdmin.Size = new System.Drawing.Size(240, 35);
             this.btnSysAdmin.TabIndex = 7;
             this.btnSysAdmin.Text = "Modulo de Administración";
             this.btnSysAdmin.UseVisualStyleBackColor = true;
@@ -91,27 +92,32 @@
             // 
             // btnInventoryModule
             // 
-            this.btnInventoryModule.Location = new System.Drawing.Point(23, 325);
+            this.btnInventoryModule.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInventoryModule.Location = new System.Drawing.Point(12, 325);
             this.btnInventoryModule.Name = "btnInventoryModule";
-            this.btnInventoryModule.Size = new System.Drawing.Size(200, 35);
+            this.btnInventoryModule.Size = new System.Drawing.Size(240, 35);
             this.btnInventoryModule.TabIndex = 6;
             this.btnInventoryModule.Text = "Modulo de Inventario";
             this.btnInventoryModule.UseVisualStyleBackColor = true;
+            this.btnInventoryModule.Click += new System.EventHandler(this.btnInventoryModule_Click);
             // 
             // btnPurchasingModule
             // 
-            this.btnPurchasingModule.Location = new System.Drawing.Point(23, 270);
+            this.btnPurchasingModule.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPurchasingModule.Location = new System.Drawing.Point(12, 270);
             this.btnPurchasingModule.Name = "btnPurchasingModule";
-            this.btnPurchasingModule.Size = new System.Drawing.Size(200, 35);
+            this.btnPurchasingModule.Size = new System.Drawing.Size(240, 35);
             this.btnPurchasingModule.TabIndex = 5;
             this.btnPurchasingModule.Text = "Modulo de Compras";
             this.btnPurchasingModule.UseVisualStyleBackColor = true;
+            this.btnPurchasingModule.Click += new System.EventHandler(this.btnPurchasingModule_Click);
             // 
             // btnInvoicingModule
             // 
-            this.btnInvoicingModule.Location = new System.Drawing.Point(23, 212);
+            this.btnInvoicingModule.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInvoicingModule.Location = new System.Drawing.Point(12, 212);
             this.btnInvoicingModule.Name = "btnInvoicingModule";
-            this.btnInvoicingModule.Size = new System.Drawing.Size(200, 35);
+            this.btnInvoicingModule.Size = new System.Drawing.Size(240, 35);
             this.btnInvoicingModule.TabIndex = 2;
             this.btnInvoicingModule.Text = "Modulo de Facturación";
             this.btnInvoicingModule.UseVisualStyleBackColor = true;
@@ -126,23 +132,13 @@
             this.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogOut.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogOut.ForeColor = System.Drawing.Color.White;
-            this.btnLogOut.Location = new System.Drawing.Point(78, 634);
+            this.btnLogOut.Location = new System.Drawing.Point(69, 765);
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(120, 30);
+            this.btnLogOut.Size = new System.Drawing.Size(154, 40);
             this.btnLogOut.TabIndex = 4;
             this.btnLogOut.Text = "Cerrar Sesión";
             this.btnLogOut.UseVisualStyleBackColor = false;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::ProyectoFinal.Properties.Resources.LogOutLogo;
-            this.pictureBox2.Location = new System.Drawing.Point(23, 629);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
             // 
             // lblRol
             // 
@@ -166,16 +162,6 @@
             this.lblName.TabIndex = 2;
             this.lblName.Text = "{UserName}";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ProyectoFinal.Properties.Resources.user_128;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(63, 72);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
             // plnHeader
             // 
             this.plnHeader.Controls.Add(this.PBMin);
@@ -188,17 +174,6 @@
             this.plnHeader.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plnHeader_MouseMove);
             this.plnHeader.MouseUp += new System.Windows.Forms.MouseEventHandler(this.plnHeader_MouseUp);
             // 
-            // PBMin
-            // 
-            this.PBMin.Image = global::ProyectoFinal.Properties.Resources.MinIcon;
-            this.PBMin.Location = new System.Drawing.Point(956, 3);
-            this.PBMin.Name = "PBMin";
-            this.PBMin.Size = new System.Drawing.Size(25, 25);
-            this.PBMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PBMin.TabIndex = 9;
-            this.PBMin.TabStop = false;
-            this.PBMin.Click += new System.EventHandler(this.PBMin_Click);
-            // 
             // plnContainer
             // 
             this.plnContainer.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -206,6 +181,37 @@
             this.plnContainer.Name = "plnContainer";
             this.plnContainer.Size = new System.Drawing.Size(1201, 798);
             this.plnContainer.TabIndex = 3;
+            // 
+            // PBMin
+            // 
+            this.PBMin.Image = global::ProyectoFinal.Properties.Resources.MinIcon;
+            this.PBMin.Location = new System.Drawing.Point(1165, 4);
+            this.PBMin.Name = "PBMin";
+            this.PBMin.Size = new System.Drawing.Size(25, 25);
+            this.PBMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PBMin.TabIndex = 9;
+            this.PBMin.TabStop = false;
+            this.PBMin.Click += new System.EventHandler(this.PBMin_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::ProyectoFinal.Properties.Resources.LogOutLogo;
+            this.pictureBox2.Location = new System.Drawing.Point(23, 765);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ProyectoFinal.Properties.Resources.user_128;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(63, 72);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // Home
             // 
@@ -223,10 +229,10 @@
             this.Load += new System.EventHandler(this.Home_Load);
             this.plnMenu.ResumeLayout(false);
             this.plnMenu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.plnHeader.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PBMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -84,6 +84,18 @@
     <Compile Include="Inventory-Module\InventoryModule.Designer.cs">
       <DependentUpon>InventoryModule.cs</DependentUpon>
     </Compile>
+    <Compile Include="Inventory-Module\ProductsAdministration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory-Module\ProductsAdministration.Designer.cs">
+      <DependentUpon>ProductsAdministration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory-Module\SuppliersAdministration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory-Module\SuppliersAdministration.Designer.cs">
+      <DependentUpon>SuppliersAdministration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Invoicing-Module\InvoicingModule.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +128,15 @@
     <EmbeddedResource Include="Common\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Inventory-Module\InventoryModule.resx">
+      <DependentUpon>InventoryModule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory-Module\ProductsAdministration.resx">
+      <DependentUpon>ProductsAdministration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory-Module\SuppliersAdministration.resx">
+      <DependentUpon>SuppliersAdministration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Invoicing-Module\InvoicingModule.resx">
       <DependentUpon>InvoicingModule.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,6 +153,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Purchasing-Module\PurchasingModule.resx">
+      <DependentUpon>PurchasingModule.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

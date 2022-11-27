@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic.Devices;
 using ProyectoFinal.Administration_Module;
+using ProyectoFinal.Inventory_Module;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +26,8 @@ namespace ProyectoFinal.Common
         ExportLogs ExportLogsForm;
         SalesReports SalesReportForm;
         InvoicingModule InvoicingForm;
+        PurchasingModule PurchasingForm;
+        InventoryModule InventoryForm;
 
         #endregion
         public Home()
@@ -62,6 +65,17 @@ namespace ProyectoFinal.Common
                     this.btnInventoryModule.Visible = false;
                     this.btnSysAdmin.Visible = false;
                     this.btnReports.Visible = false;
+
+                    InvoicingForm = new InvoicingModule();
+                    this.InvoicingForm.TopLevel = false;
+                    this.plnContainer.Controls.Add(InvoicingForm);
+                    this.InvoicingForm.Show();
+                    break;
+                default:
+                    InvoicingForm = new InvoicingModule();
+                    this.InvoicingForm.TopLevel = false;
+                    this.plnContainer.Controls.Add(InvoicingForm);
+                    this.InvoicingForm.Show();
                     break;
 
             }
@@ -94,11 +108,6 @@ namespace ProyectoFinal.Common
             Login login = new Login();
             login.Show();
             this.Hide();
-        }
-
-        private void plnMenu_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void btnInvoicingModule_Click(object sender, EventArgs e)
@@ -157,6 +166,36 @@ namespace ProyectoFinal.Common
                 this.SalesReportForm.TopLevel = false;
                 this.plnContainer.Controls.Add(SalesReportForm);
                 this.SalesReportForm.Show();
+            }
+        }
+
+        private void btnPurchasingModule_Click(object sender, EventArgs e)
+        {
+            if (this.PurchasingForm != null)
+            {
+                this.PurchasingForm.BringToFront();
+            }
+            else
+            {
+                this.PurchasingForm = new PurchasingModule();
+                this.PurchasingForm.TopLevel = false;
+                this.plnContainer.Controls.Add(PurchasingForm);
+                this.PurchasingForm.Show();
+            }
+        }
+
+        private void btnInventoryModule_Click(object sender, EventArgs e)
+        {
+            if (this.InventoryForm != null)
+            {
+                this.InventoryForm.BringToFront();
+            }
+            else
+            {
+                this.InventoryForm = new InventoryModule();
+                this.InventoryForm.TopLevel = false;
+                this.plnContainer.Controls.Add(InventoryForm);
+                this.InventoryForm.Show();
             }
         }
 

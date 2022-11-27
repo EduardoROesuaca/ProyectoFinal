@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProyectoFinal.Common;
+using ProyectoFinal.Inventory_Module;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +18,7 @@ namespace ProyectoFinal
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new Home());
         }
     }
 }

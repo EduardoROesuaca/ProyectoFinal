@@ -286,5 +286,10 @@ namespace ProyectoFinal
         {
 
         }
+
+        private void dataFacturacion_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
