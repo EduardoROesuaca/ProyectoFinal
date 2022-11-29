@@ -33,9 +33,10 @@
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ProductsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SuppliersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblTitle = new System.Windows.Forms.Label();
             this.categoríasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.presentacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.impuestosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +65,8 @@
             this.ProductsToolStripMenuItem,
             this.SuppliersToolStripMenuItem,
             this.categoríasToolStripMenuItem,
-            this.presentacionesToolStripMenuItem});
+            this.presentacionesToolStripMenuItem,
+            this.impuestosToolStripMenuItem});
             this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
             this.productosToolStripMenuItem.Size = new System.Drawing.Size(111, 25);
             this.productosToolStripMenuItem.Text = "Administrar";
@@ -72,27 +74,16 @@
             // ProductsToolStripMenuItem
             // 
             this.ProductsToolStripMenuItem.Name = "ProductsToolStripMenuItem";
-            this.ProductsToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.ProductsToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
             this.ProductsToolStripMenuItem.Text = "Productos";
             this.ProductsToolStripMenuItem.Click += new System.EventHandler(this.ProductsToolStripMenuItem_Click);
             // 
             // SuppliersToolStripMenuItem
             // 
             this.SuppliersToolStripMenuItem.Name = "SuppliersToolStripMenuItem";
-            this.SuppliersToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.SuppliersToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
             this.SuppliersToolStripMenuItem.Text = "Proveedores";
             this.SuppliersToolStripMenuItem.Click += new System.EventHandler(this.SuppliersToolStripMenuItem_Click);
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.Black;
-            this.lblTitle.Location = new System.Drawing.Point(400, 60);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(350, 25);
-            this.lblTitle.TabIndex = 4;
-            this.lblTitle.Text = "Administración de {categoria}";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // categoríasToolStripMenuItem
             // 
@@ -105,6 +96,23 @@
             this.presentacionesToolStripMenuItem.Name = "presentacionesToolStripMenuItem";
             this.presentacionesToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
             this.presentacionesToolStripMenuItem.Text = "Presentaciones";
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.Black;
+            this.lblTitle.Location = new System.Drawing.Point(400, 60);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(350, 25);
+            this.lblTitle.TabIndex = 4;
+            this.lblTitle.Text = "Administración de {categoria}";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // impuestosToolStripMenuItem
+            // 
+            this.impuestosToolStripMenuItem.Name = "impuestosToolStripMenuItem";
+            this.impuestosToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
+            this.impuestosToolStripMenuItem.Text = "Impuestos";
             // 
             // InventoryModule
             // 
@@ -139,5 +147,6 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.ToolStripMenuItem categoríasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem presentacionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem impuestosToolStripMenuItem;
     }
 }
