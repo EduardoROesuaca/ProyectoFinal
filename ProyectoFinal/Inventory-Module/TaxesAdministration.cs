@@ -110,8 +110,8 @@ namespace ProyectoFinal.Inventory_Module
                     }
                     else
                     {
-                        double number = 0.0;
-                        if (!Double.TryParse(txtRate.Text.Trim(), out number))
+                        decimal numberf;
+                        if (!decimal.TryParse(txtRate.Text.Trim().Replace('.',','), out numberf) || numberf<0)
                         {
                             MessageBox.Show(this, "Por favor ingrese una taza de impuesto válida e intentolo de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             txtRate.Focus();
@@ -125,7 +125,7 @@ namespace ProyectoFinal.Inventory_Module
                                     cmd.CommandType = CommandType.StoredProcedure;
                                     cmd.Parameters.AddWithValue("@TaxID", txtId.Text.Trim());
                                     cmd.Parameters.AddWithValue("@Name", txtName.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@Rate", txtRate.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@Rate", numberf);
                                     cmd.Parameters.AddWithValue("@Description", txtDescription.Text.Trim());
                                     connection.Open();
                                     int rows = cmd.ExecuteNonQuery();
@@ -170,8 +170,8 @@ namespace ProyectoFinal.Inventory_Module
                     }
                     else
                     {
-                        double number = 0.0;
-                        if (!Double.TryParse(txtRate.Text.Trim(), out number))
+                        decimal numberf; ;
+                        if (!decimal.TryParse(txtRate.Text.Trim().Replace('.', ','), out numberf) || numberf<0)
                         {
                             MessageBox.Show(this, "Por favor ingrese una taza de impuesto válida e intentolo de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             txtRate.Focus();
@@ -184,7 +184,7 @@ namespace ProyectoFinal.Inventory_Module
                                 {
                                     cmd.CommandType = CommandType.StoredProcedure;
                                     cmd.Parameters.AddWithValue("@Name", txtName.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@Rate", txtRate.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@Rate", numberf);
                                     cmd.Parameters.AddWithValue("@Description", txtDescription.Text.Trim());
                                     connection.Open();
                                     int rows = cmd.ExecuteNonQuery();

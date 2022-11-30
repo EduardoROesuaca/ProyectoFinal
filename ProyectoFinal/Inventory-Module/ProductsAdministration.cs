@@ -203,15 +203,16 @@ namespace ProyectoFinal.Inventory_Module
                 }
                 else
                 {
-                    int number = 0;
-                    if (!Regex.IsMatch(txtPrice.Text.Trim(), numbersPattern) || !int.TryParse(txtPrice.Text.Trim(), out number))
+                    int number=0;
+                    decimal numberf;
+                    if (!decimal.TryParse(txtPrice.Text.Trim().Replace('.', ','), out numberf) || numberf < 0)
                     {
-                        MessageBox.Show(this, "El precio del producto solo debe contener numeros, sin comas ni puntos y debe ser mayor a ¢0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(this, "El precio del producto solo debe contener numeros, comas y debe ser mayor a ¢0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         txtPrice.ResetText();
                     }
                     else
                     {
-                        if (!Regex.IsMatch(txtStock.Text.Trim(), numbersPattern) || !int.TryParse(txtStock.Text.Trim(), out number))
+                        if (!Regex.IsMatch(txtStock.Text.Trim(), numbersPattern) || !int.TryParse(txtStock.Text.Trim(), out number) || number<0)
                         {
                             MessageBox.Show(this, "El Stock del producto debe ser un número mayor a 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             txtStock.ResetText();
@@ -228,7 +229,7 @@ namespace ProyectoFinal.Inventory_Module
                                     cmd.Parameters.AddWithValue("@PresentationID", cmbxPresentation.SelectedValue);
                                     cmd.Parameters.AddWithValue("@TaxID", cmbxTax.SelectedValue);
                                     cmd.Parameters.AddWithValue("@Name", txtName.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@Price", txtPrice.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@Price", numberf);
                                     cmd.Parameters.AddWithValue("@Stock", txtStock.Text.Trim());
                                     cmd.Parameters.AddWithValue("@ReorderLevel", tbReorderLevel.Value);
                                     connection.Open();
@@ -265,10 +266,10 @@ namespace ProyectoFinal.Inventory_Module
                 else
                 {
                     int number = 0;
-                    double numberf = 0.0;
-                    if (!double.TryParse(txtPrice.Text.Trim().Remove(txtPrice.Text.Trim().IndexOf(',')), out numberf) || numberf < 0.0)
+                    decimal numberf;
+                    if (!decimal.TryParse(txtPrice.Text.Trim().Replace('.',','), out numberf) || numberf < 0)
                     {
-                        MessageBox.Show(this, "El precio del producto solo debe contener numeros, sin comas ni puntos y debe ser mayor a ¢0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(this, "El precio del producto solo debe contener numeros, comas y debe ser mayor a ¢0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         txtPrice.ResetText();
                     }
                     else
