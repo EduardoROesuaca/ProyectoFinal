@@ -21,7 +21,7 @@ namespace ProyectoFinal
 
         public InvoicingModule()
         {
-            //COMENTARIOOOOOOOOOOOOOOOO
+            //COMENTARIOOOOOOOOOOOOOOOO8
             InitializeComponent();
             this.strConexion = "Data Source=DESKTOP-ASF7EIQ\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";
         }
