@@ -166,7 +166,7 @@ namespace ProyectoFinal
                             txtBuscarProdID.Text = "";
                             txtCantidadProd.Text = "";
                             lblVistaPrevia.Text = "";
-                            contFila++;
+                            //contFila++;
                         }
                     }
                     else
