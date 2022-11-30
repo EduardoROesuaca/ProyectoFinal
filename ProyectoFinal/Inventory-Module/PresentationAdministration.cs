@@ -21,8 +21,8 @@ namespace ProyectoFinal.Inventory_Module
         {
             InitializeComponent();
             //this.strConexion = "Data Source=DESKTOP-ASF7EIQ\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";   //GERALDO
-            this.strConexion = "Data Source=DESKTOP-KQNBJVI\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";   //EDUARDO-DESKTOP
-            //this.strConexion = "Data Source=EDUARDO\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";             //EDUARDO-LAPTOP
+            //this.strConexion = "Data Source=DESKTOP-KQNBJVI\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";   //EDUARDO-DESKTOP
+            this.strConexion = "Data Source=EDUARDO\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";             //EDUARDO-LAPTOP
         }
 
         public void loadPresentation()
@@ -90,9 +90,9 @@ namespace ProyectoFinal.Inventory_Module
             string invalidcharPattern = "[!\"·$&/()=¿¡?'_:;,|@#€*+]";
             if (txtId.Text.Trim().Length == 0)
             {
-                if (Regex.IsMatch(txtDescription.Text.Trim(), invalidcharPattern) || txtDescription.Text.Trim().Length < 4)
+                if (Regex.IsMatch(txtDescription.Text.Trim(), invalidcharPattern) || txtDescription.Text.Trim().Length < 4 || txtDescription.Text.Trim().Length > 20)
                 {
-                    MessageBox.Show(this, "Debe registrar una descripción que no contenga:\n{!\"·$&/()=¿¡?'_:;,|@#€*+}\ny de al menos 5 caracteres", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, "Debe registrar una descripción que no contenga:\n{!\"·$&/()=¿¡?'_:;,|@#€*+}\ny de al menos 5 caracteres y maximo 20", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {

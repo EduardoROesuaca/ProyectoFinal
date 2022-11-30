@@ -108,6 +108,12 @@
     <Compile Include="Inventory-Module\SuppliersAdministration.Designer.cs">
       <DependentUpon>SuppliersAdministration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Inventory-Module\TaxesAdministration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory-Module\TaxesAdministration.Designer.cs">
+      <DependentUpon>TaxesAdministration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Invoicing-Module\InvoicingModule.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory-Module\SuppliersAdministration.resx">
       <DependentUpon>SuppliersAdministration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory-Module\TaxesAdministration.resx">
+      <DependentUpon>TaxesAdministration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Invoicing-Module\InvoicingModule.resx">
       <DependentUpon>InvoicingModule.cs</DependentUpon>

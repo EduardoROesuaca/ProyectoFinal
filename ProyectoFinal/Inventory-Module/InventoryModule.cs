@@ -19,13 +19,14 @@ namespace ProyectoFinal.Inventory_Module
         ProductsAdministration ProductsForm;
         CategoryAdministration CategoryForm;
         PresentationAdministration PresentationForm;
+        TaxesAdministration TaxesForm;
         #endregion
         public InventoryModule()
         {
             InitializeComponent();
             //this.strConexion = "Data Source=DESKTOP-ASF7EIQ\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";   //GERALDO
-            this.strConexion = "Data Source=DESKTOP-KQNBJVI\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";   //EDUARDO-DESKTOP
-            //this.strConexion = "Data Source=EDUARDO\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";             //EDUARDO-LAPTOP
+            //this.strConexion = "Data Source=DESKTOP-KQNBJVI\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";   //EDUARDO-DESKTOP
+            this.strConexion = "Data Source=EDUARDO\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";             //EDUARDO-LAPTOP
         }
 
         private void InventoryModule_Load(object sender, EventArgs e)
@@ -109,6 +110,23 @@ namespace ProyectoFinal.Inventory_Module
                 this.PresentationForm.TopLevel = false;
                 this.pnlContainer.Controls.Add(PresentationForm);
                 this.PresentationForm.Show();
+            }
+        }
+
+        private void impuestosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            lblTitle.Text = "Administración de Impuestos";
+            if (this.TaxesForm != null)
+            {
+                this.TaxesForm.BringToFront();
+                this.TaxesForm.loadTaxes();
+            }
+            else
+            {
+                this.TaxesForm = new TaxesAdministration();
+                this.TaxesForm.TopLevel = false;
+                this.pnlContainer.Controls.Add(TaxesForm);
+                this.TaxesForm.Show();
             }
         }
     }

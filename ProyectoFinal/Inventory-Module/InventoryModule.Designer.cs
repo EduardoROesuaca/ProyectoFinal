@@ -104,16 +104,17 @@
             this.impuestosToolStripMenuItem.Name = "impuestosToolStripMenuItem";
             this.impuestosToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
             this.impuestosToolStripMenuItem.Text = "Impuestos";
+            this.impuestosToolStripMenuItem.Click += new System.EventHandler(this.impuestosToolStripMenuItem_Click);
             // 
             // lblTitle
             // 
             this.lblTitle.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.Black;
-            this.lblTitle.Location = new System.Drawing.Point(400, 60);
+            this.lblTitle.Location = new System.Drawing.Point(375, 60);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(350, 25);
+            this.lblTitle.Size = new System.Drawing.Size(450, 25);
             this.lblTitle.TabIndex = 4;
-            this.lblTitle.Text = "Administración de {categoria}";
+            this.lblTitle.Text = "Administración de {type}";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // InventoryModule
