@@ -21,7 +21,6 @@ namespace ProyectoFinal
 
         public InvoicingModule()
         {
-            //COMENTARIOOOOOOOOOOOOOOOO8
             InitializeComponent();
             this.strConexion = "Data Source=DESKTOP-ASF7EIQ\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";
         }
@@ -40,7 +39,6 @@ namespace ProyectoFinal
             txtPagoTC.Text = "0";   
             txtVuelto.Text = "0";
         }
-        //jeje
         private void PBMin_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
