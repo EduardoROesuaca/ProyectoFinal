@@ -40,7 +40,7 @@ namespace ProyectoFinal
             txtPagoTC.Text = "0";   
             txtVuelto.Text = "0";
         }
-
+        //jeje
         private void PBMin_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
