@@ -22,8 +22,8 @@ namespace ProyectoFinal.Inventory_Module
         {
             InitializeComponent();
             //this.strConexion = "Data Source=DESKTOP-ASF7EIQ\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";   //GERALDO
-            //this.strConexion = "Data Source=DESKTOP-KQNBJVI\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";   //EDUARDO-DESKTOP
-            this.strConexion = "Data Source=EDUARDO\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";             //EDUARDO-LAPTOP
+            this.strConexion = "Data Source=DESKTOP-KQNBJVI\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";   //EDUARDO-DESKTOP
+            //this.strConexion = "Data Source=EDUARDO\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";             //EDUARDO-LAPTOP
         }
 
         private void SuppliersAdministration_Load(object sender, EventArgs e)
@@ -63,35 +63,34 @@ namespace ProyectoFinal.Inventory_Module
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
-            /*using (SqlConnection connection = new SqlConnection(strConexion))
+            if (txtId.Text.Trim().Length > 0)
             {
-                using (SqlCommand cmd = new SqlCommand("SP_DeleteSupplier", connection))
+                using (SqlConnection connection = new SqlConnection(strConexion))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@SupplierID", cmbxSupplier.SelectedValue);
-                    cmd.Parameters.AddWithValue("@CategoryID", cmbxCategory.SelectedValue);
-                    cmd.Parameters.AddWithValue("@PresentationID", cmbxPresentation.SelectedValue);
-                    cmd.Parameters.AddWithValue("@TaxID", cmbxTax.SelectedValue);
-                    cmd.Parameters.AddWithValue("@Name", txtName.Text.Trim());
-                    cmd.Parameters.AddWithValue("@Price", txtPrice.Text.Trim());
-                    cmd.Parameters.AddWithValue("@Stock", txtStock.Text.Trim());
-                    cmd.Parameters.AddWithValue("@ReorderLevel", tbReorderLevel.Value);
-                    connection.Open();
-                    int rows = cmd.ExecuteNonQuery();
-                    if (rows == 1)
+                    using (SqlCommand cmd = new SqlCommand("SP_DeleteSupplier", connection))
                     {
-                        loadProducts();
-                        btnClear_Click(sender, e);
-                        MessageBox.Show(this, "Producto registrado!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show(this, "Error al registrar el producto\nIntentelo nuevamente mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@SupplierID", txtId.Text.Trim());
+
+                        connection.Open();
+                        int rows = cmd.ExecuteNonQuery();
+                        if (rows != -1)
+                        {
+                            loadSuppliers();
+                            btnClear_Click(sender, e);
+                            MessageBox.Show(this, "Proveedor eliminado!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show(this, "Error al eliminar el proveedor\nIntentelo nuevamente mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
-            }*/
-
+            }
+            else
+            {
+                MessageBox.Show(this, "Seleccione el proveedor que desea eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void DGV_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -113,9 +112,9 @@ namespace ProyectoFinal.Inventory_Module
 
             if (txtId.Text.Trim().Length > 0)
             {
-                if (!Regex.IsMatch(txtName.Text.Trim(), invalidcharPattern) || txtName.Text.Trim().Length < 1)
+                if (Regex.IsMatch(txtName.Text.Trim(), invalidcharPattern) || txtName.Text.Trim().Length < 1)
                 {
-                    MessageBox.Show(this, "El nombre del proveedor no puede contener:\n{!\"·$&/()%=¿¡?'_:;,|@#€*+}\nNi puede estar vacio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, "El nombre del proveedor no puede contener caracteres como:\n{!\"·$&/()%=¿¡?'_:;,|@#€*+}\nNi puede estar vacio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtName.ResetText();
                 }
                 else
@@ -128,7 +127,7 @@ namespace ProyectoFinal.Inventory_Module
                     {
                         if (!Regex.IsMatch(txtTel.Text.Trim(), telregex) || txtTel.Text.Trim().Length < 8)
                         {
-                            MessageBox.Show(this, "Ingrese un número de teléfono válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(this, "Ingrese un número de teléfono válido\n(8 digitos, sin espacios)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {
@@ -136,33 +135,30 @@ namespace ProyectoFinal.Inventory_Module
                             {
                                 MailAddress address = new MailAddress(txtEmail.Text.Trim());
 
-                                /*using (SqlConnection connection = new SqlConnection(strConexion))
+                                using (SqlConnection connection = new SqlConnection(strConexion))
                                 {
-                                    using (SqlCommand cmd = new SqlCommand("SP_InsertProduct", connection))
+                                    using (SqlCommand cmd = new SqlCommand("SP_UpdateSupplier", connection))
                                     {
                                         cmd.CommandType = CommandType.StoredProcedure;
-                                        cmd.Parameters.AddWithValue("@SupplierID", cmbxSupplier.SelectedValue);
-                                        cmd.Parameters.AddWithValue("@CategoryID", cmbxCategory.SelectedValue);
-                                        cmd.Parameters.AddWithValue("@PresentationID", cmbxPresentation.SelectedValue);
-                                        cmd.Parameters.AddWithValue("@TaxID", cmbxTax.SelectedValue);
+                                        cmd.Parameters.AddWithValue("@SupplierID",txtId.Text.Trim());
                                         cmd.Parameters.AddWithValue("@Name", txtName.Text.Trim());
-                                        cmd.Parameters.AddWithValue("@Price", txtPrice.Text.Trim());
-                                        cmd.Parameters.AddWithValue("@Stock", txtStock.Text.Trim());
-                                        cmd.Parameters.AddWithValue("@ReorderLevel", tbReorderLevel.Value);
+                                        cmd.Parameters.AddWithValue("@Address", txtAddress.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@TelNumber", txtTel.Text.Trim());
                                         connection.Open();
                                         int rows = cmd.ExecuteNonQuery();
                                         if (rows == 1)
                                         {
-                                            loadProducts();
+                                            loadSuppliers();
                                             btnClear_Click(sender, e);
-                                            MessageBox.Show(this, "Producto registrado!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            MessageBox.Show(this, "Proveedor actualizado!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         }
                                         else
                                         {
-                                            MessageBox.Show(this, "Error al registrar el producto\nIntentelo nuevamente mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            MessageBox.Show(this, "Error al actualizar el proveedor\nIntentelo nuevamente mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         }
                                     }
-                                }*/
+                                }
 
                             }
                             catch (FormatException)
@@ -176,6 +172,75 @@ namespace ProyectoFinal.Inventory_Module
             else
             {
                 MessageBox.Show(this, "Seleccione el proveedor que desea actualizar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            string invalidcharPattern = "[!\"·$&/()%=¿¡?'_:;,|@#€*+]";
+            string telregex = "^\\d+$";
+
+            if (txtId.Text.Trim().Length == 0)
+            {
+                if (Regex.IsMatch(txtName.Text.Trim(), invalidcharPattern) || txtName.Text.Trim().Length < 1)
+                {
+                    MessageBox.Show(this, "El nombre del proveedor no puede contener caracteres como:\n{!\"·$&/()%=¿¡?'_:;,|@#€*+}\nNi puede estar vacio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtName.ResetText();
+                }
+                else
+                {
+                    if (txtAddress.Text.Trim().Length < 1)
+                    {
+                        MessageBox.Show(this, "Debe ingresar la dirección del proveedor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        if (!Regex.IsMatch(txtTel.Text.Trim(), telregex) || txtTel.Text.Trim().Length < 8)
+                        {
+                            MessageBox.Show(this, "Ingrese un número de teléfono válido\n(8 digitos, sin espacios)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            try
+                            {
+                                MailAddress address = new MailAddress(txtEmail.Text.Trim());
+
+                                using (SqlConnection connection = new SqlConnection(strConexion))
+                                {
+                                    using (SqlCommand cmd = new SqlCommand("SP_InsertSupplier", connection))
+                                    {
+                                        cmd.CommandType = CommandType.StoredProcedure;
+                                        cmd.Parameters.AddWithValue("@Name", txtName.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@Address", txtAddress.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@TelNumber", txtTel.Text.Trim());
+                                        connection.Open();
+                                        int rows = cmd.ExecuteNonQuery();
+                                        if (rows == 1)
+                                        {
+                                            loadSuppliers();
+                                            btnClear_Click(sender, e);
+                                            MessageBox.Show(this, "Proveedor registrado!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show(this, "Error al registrar el proveedor\nIntentelo nuevamente mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                    }
+                                }
+
+                            }
+                            catch (FormatException)
+                            {
+                                MessageBox.Show(this, "Ingrese una dirección de correo electrónico válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show(this, "Limpie los campos antes de registrar un nuevo suplidor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

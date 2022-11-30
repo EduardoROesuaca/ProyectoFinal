@@ -26,8 +26,8 @@ namespace ProyectoFinal.Inventory_Module
             InitializeComponent();
             lblTrackBarValue.Text = tbReorderLevel.Value.ToString() + "%";
             //this.strConexion = "Data Source=DESKTOP-ASF7EIQ\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";   //GERALDO
-            //this.strConexion = "Data Source=DESKTOP-KQNBJVI\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";   //EDUARDO-DESKTOP
-            this.strConexion = "Data Source=EDUARDO\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";             //EDUARDO-LAPTOP
+            this.strConexion = "Data Source=DESKTOP-KQNBJVI\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";   //EDUARDO-DESKTOP
+            //this.strConexion = "Data Source=EDUARDO\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";             //EDUARDO-LAPTOP
         }
 
         private void tbReorderLevel_Scroll(object sender, EventArgs e)
@@ -186,7 +186,7 @@ namespace ProyectoFinal.Inventory_Module
         {
             string invalidcharPattern = "[!\"·$&/()=¿¡?'_:;,|@#€*+]";
             string numbersPattern = "^\\d+$";
-            if (txtId.Text.Trim().Length > 0)
+            if (txtId.Text.Trim().Length == 1)
             {
                 MessageBox.Show(this, "Debe de limpiar todos los campos antes de registrar un nuevo producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -251,99 +251,107 @@ namespace ProyectoFinal.Inventory_Module
         {
             string invalidcharPattern = "[!\"·$&/()=¿¡?'_:;,|@#€*+]";
             string numbersPattern = "^\\d+$";
-            if (Regex.IsMatch(txtName.Text.Trim(), invalidcharPattern) || txtName.Text.Trim().Length == 0)
+            if (txtId.Text.Trim().Length == 1)
             {
-                MessageBox.Show(this, "Debe registrar un nombre de producto que no contenga:\n{!\"·$&/()=¿¡?'_:;,|@#€*+}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                int number = 0;
-                double numberf = 0.0;
-                if (!double.TryParse(txtPrice.Text.Trim().Remove(txtPrice.Text.Trim().IndexOf(',')), out numberf) || numberf<0.0)
+                if (Regex.IsMatch(txtName.Text.Trim(), invalidcharPattern) || txtName.Text.Trim().Length == 0)
                 {
-                    MessageBox.Show(this, "El precio del producto solo debe contener numeros, sin comas ni puntos y debe ser mayor a ¢0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtPrice.ResetText();
+                    MessageBox.Show(this, "Debe registrar un nombre de producto que no contenga:\n{!\"·$&/()=¿¡?'_:;,|@#€*+}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    if (!Regex.IsMatch(txtStock.Text.Trim(), numbersPattern) || !int.TryParse(txtStock.Text.Trim(), out number))
+                    int number = 0;
+                    double numberf = 0.0;
+                    if (!double.TryParse(txtPrice.Text.Trim().Remove(txtPrice.Text.Trim().IndexOf(',')), out numberf) || numberf < 0.0)
                     {
-                        MessageBox.Show(this, "El Stock del producto debe ser un número mayor a 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        txtStock.ResetText();
+                        MessageBox.Show(this, "El precio del producto solo debe contener numeros, sin comas ni puntos y debe ser mayor a ¢0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtPrice.ResetText();
                     }
                     else
                     {
-                        using (SqlConnection connection = new SqlConnection(strConexion))
+                        if (!Regex.IsMatch(txtStock.Text.Trim(), numbersPattern) || !int.TryParse(txtStock.Text.Trim(), out number))
                         {
-                            using (SqlCommand cmd = new SqlCommand("SP_UpdateProduct", connection))
+                            MessageBox.Show(this, "El Stock del producto debe ser un número mayor a 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txtStock.ResetText();
+                        }
+                        else
+                        {
+                            using (SqlConnection connection = new SqlConnection(strConexion))
                             {
-                                cmd.CommandType = CommandType.StoredProcedure;
-                                cmd.Parameters.AddWithValue("@ProductID", txtId.Text);
-                                cmd.Parameters.AddWithValue("@SupplierID", cmbxSupplier.SelectedValue);
-                                cmd.Parameters.AddWithValue("@CategoryID", cmbxCategory.SelectedValue);
-                                cmd.Parameters.AddWithValue("@PresentationID", cmbxPresentation.SelectedValue);
-                                cmd.Parameters.AddWithValue("@TaxID", cmbxTax.SelectedValue);
-                                cmd.Parameters.AddWithValue("@Name", txtName.Text.Trim());
-                                cmd.Parameters.AddWithValue("@Price", numberf);
-                                cmd.Parameters.AddWithValue("@Stock", txtStock.Text.Trim());
-                                cmd.Parameters.AddWithValue("@ReorderLevel", tbReorderLevel.Value);
-                                cmd.Parameters.AddWithValue("@State", cmbxDiscontinued.SelectedIndex);
-                                connection.Open();
-                                int rows = cmd.ExecuteNonQuery();
-                                if (rows == 1)
+                                using (SqlCommand cmd = new SqlCommand("SP_UpdateProduct", connection))
                                 {
-                                    loadProducts();
-                                    btnClear_Click(sender, e);
-                                    MessageBox.Show(this, "Producto actualizado!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                                else
-                                {
-                                    MessageBox.Show(this, "Error al actualizar el producto\nIntentelo nuevamente mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    cmd.CommandType = CommandType.StoredProcedure;
+                                    cmd.Parameters.AddWithValue("@ProductID", txtId.Text);
+                                    cmd.Parameters.AddWithValue("@SupplierID", cmbxSupplier.SelectedValue);
+                                    cmd.Parameters.AddWithValue("@CategoryID", cmbxCategory.SelectedValue);
+                                    cmd.Parameters.AddWithValue("@PresentationID", cmbxPresentation.SelectedValue);
+                                    cmd.Parameters.AddWithValue("@TaxID", cmbxTax.SelectedValue);
+                                    cmd.Parameters.AddWithValue("@Name", txtName.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@Price", numberf);
+                                    cmd.Parameters.AddWithValue("@Stock", txtStock.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@ReorderLevel", tbReorderLevel.Value);
+                                    cmd.Parameters.AddWithValue("@State", cmbxDiscontinued.SelectedIndex);
+                                    connection.Open();
+                                    int rows = cmd.ExecuteNonQuery();
+                                    if (rows == 1)
+                                    {
+                                        loadProducts();
+                                        btnClear_Click(sender, e);
+                                        MessageBox.Show(this, "Producto actualizado!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(this, "Error al actualizar el producto\nIntentelo nuevamente mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                 }
                             }
                         }
                     }
-                }
 
-            }
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (txtId.Text.Trim().Length < 1)
-            {
-                DialogResult dialogResult = MessageBox.Show(this, "ATENCIÓN\n\nSE ELIMINARÁ UN PRODUCTO, SE RECOMIENDA DESCONTINUAR LOS PRODUCTOS\n\n¿DESEA CONTINUAR?", "¿Estás seguro?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    //do something
-                }
-                else if (dialogResult == DialogResult.No)
-                {
-                    //do something else
                 }
             }
             else
             {
-                using (SqlConnection connection = new SqlConnection(strConexion))
+                MessageBox.Show(this, "Seleccione el producto que desea actualizar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (txtId.Text.Trim().Length > 0)
+            {
+                DialogResult dialogResult = MessageBox.Show(this, "ATENCIÓN\n\nSE ELIMINARÁ UN PRODUCTO, SE RECOMIENDA DESCONTINUAR Y NO ELIMINAR\n\n¿DESEA CONTINUAR?", "¿Estás seguro?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    using (SqlCommand cmd = new SqlCommand("SP_DeleteProduct", connection))
+                    using (SqlConnection connection = new SqlConnection(strConexion))
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@ProductID", txtId.Text.Trim());
-                        connection.Open();
-                        int rows = cmd.ExecuteNonQuery();
-                        if (rows == 1)
+                        using (SqlCommand cmd = new SqlCommand("SP_DeleteProduct", connection))
                         {
-                            loadProducts();
-                            btnClear_Click(sender, e);
-                            MessageBox.Show(this, "Producto eliminado!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show(this, "Error al eliminar el producto\nIntentelo nuevamente mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@ProductID", txtId.Text.Trim());
+                            connection.Open();
+                            int rows = cmd.ExecuteNonQuery();
+                            if (rows != -1)
+                            {
+                                loadProducts();
+                                btnClear_Click(sender, e);
+                                MessageBox.Show(this, "Producto eliminado!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show(this, "Error al eliminar el producto\nIntentelo nuevamente mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
+                else if (dialogResult == DialogResult.No)
+                {
+                    btnClear_Click(sender, e);
+                }
+            }
+            else
+            {
+                MessageBox.Show(this, "Seleccione el producto que desea eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

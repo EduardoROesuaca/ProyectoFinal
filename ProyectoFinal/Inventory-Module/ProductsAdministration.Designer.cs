@@ -279,7 +279,7 @@
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(758, 637);
+            this.btnClear.Location = new System.Drawing.Point(622, 637);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(130, 35);
             this.btnClear.TabIndex = 38;
@@ -344,7 +344,7 @@
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(622, 637);
+            this.btnDelete.Location = new System.Drawing.Point(758, 637);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(130, 35);
             this.btnDelete.TabIndex = 44;
