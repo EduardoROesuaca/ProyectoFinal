@@ -28,9 +28,12 @@ namespace ProyectoFinal.Inventory_Module
 
         private void SuppliersAdministration_Load(object sender, EventArgs e)
         {
+            update();
+        }
+        public void update()
+        {
             loadSuppliers();
         }
-
         public void loadSuppliers()
         {
             try
@@ -74,7 +77,7 @@ namespace ProyectoFinal.Inventory_Module
 
                         connection.Open();
                         int rows = cmd.ExecuteNonQuery();
-                        if (rows != -1)
+                        if (rows == 1)
                         {
                             loadSuppliers();
                             btnClear_Click(sender, e);
@@ -82,7 +85,7 @@ namespace ProyectoFinal.Inventory_Module
                         }
                         else
                         {
-                            MessageBox.Show(this, "Error al eliminar el proveedor\nIntentelo nuevamente mas tarde", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(this, "No se puede eliminar el proveedor\nEl proveedor tiene productos asociados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }

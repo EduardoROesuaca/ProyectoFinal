@@ -49,6 +49,7 @@ namespace ProyectoFinal.Inventory_Module
             if (this.ProductsForm != null)
             {
                 this.ProductsForm.BringToFront();
+                this.ProductsForm.update();
             }
             else
             {
@@ -65,6 +66,7 @@ namespace ProyectoFinal.Inventory_Module
             if (this.SuppliersForm != null)
             {
                 this.SuppliersForm.BringToFront();
+                this.SuppliersForm.update();
             }
             else
             {

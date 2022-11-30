@@ -37,7 +37,12 @@ namespace ProyectoFinal.Inventory_Module
 
         private void ProductsAdministration_Load(object sender, EventArgs e)
         {
-            loadTax(); 
+            update();
+        }
+
+        public void update()
+        {
+            loadTax();
             loadCategory();
             loadSuppliers();
             loadPresentation();
