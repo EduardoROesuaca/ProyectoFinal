@@ -78,11 +78,23 @@
     <Compile Include="Authentication\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Inventory-Module\CategoryAdministration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory-Module\CategoryAdministration.Designer.cs">
+      <DependentUpon>CategoryAdministration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inventory-Module\InventoryModule.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Inventory-Module\InventoryModule.Designer.cs">
       <DependentUpon>InventoryModule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory-Module\PresentationAdministration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory-Module\PresentationAdministration.Designer.cs">
+      <DependentUpon>PresentationAdministration.cs</DependentUpon>
     </Compile>
     <Compile Include="Inventory-Module\ProductsAdministration.cs">
       <SubType>Form</SubType>
@@ -128,8 +140,14 @@
     <EmbeddedResource Include="Common\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Inventory-Module\CategoryAdministration.resx">
+      <DependentUpon>CategoryAdministration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inventory-Module\InventoryModule.resx">
       <DependentUpon>InventoryModule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory-Module\PresentationAdministration.resx">
+      <DependentUpon>PresentationAdministration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory-Module\ProductsAdministration.resx">
       <DependentUpon>ProductsAdministration.cs</DependentUpon>

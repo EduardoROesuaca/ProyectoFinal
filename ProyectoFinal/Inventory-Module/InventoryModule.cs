@@ -17,6 +17,8 @@ namespace ProyectoFinal.Inventory_Module
         String strConexion;
         SuppliersAdministration SuppliersForm;
         ProductsAdministration ProductsForm;
+        CategoryAdministration CategoryForm;
+        PresentationAdministration PresentationForm;
         #endregion
         public InventoryModule()
         {
@@ -28,7 +30,6 @@ namespace ProyectoFinal.Inventory_Module
 
         private void InventoryModule_Load(object sender, EventArgs e)
         {
-            lblTitle.Text = "Administración de Productos";
             lblTitle.Text = "Administración de Productos";
             if (this.ProductsForm != null)
             {
@@ -74,6 +75,40 @@ namespace ProyectoFinal.Inventory_Module
                 this.SuppliersForm.TopLevel = false;
                 this.pnlContainer.Controls.Add(SuppliersForm);
                 this.SuppliersForm.Show();
+            }
+        }
+
+        private void categoríasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            lblTitle.Text = "Administración de Categorías";
+            if (this.CategoryForm != null)
+            {
+                this.CategoryForm.BringToFront();
+                this.CategoryForm.loadCategory();
+            }
+            else
+            {
+                this.CategoryForm = new CategoryAdministration();
+                this.CategoryForm.TopLevel = false;
+                this.pnlContainer.Controls.Add(CategoryForm);
+                this.CategoryForm.Show();
+            }
+        }
+
+        private void presentacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            lblTitle.Text = "Administración de Presentaciones";
+            if (this.PresentationForm != null)
+            {
+                this.PresentationForm.BringToFront();
+                this.PresentationForm.loadPresentation();
+            }
+            else
+            {
+                this.PresentationForm = new PresentationAdministration();
+                this.PresentationForm.TopLevel = false;
+                this.pnlContainer.Controls.Add(PresentationForm);
+                this.PresentationForm.Show();
             }
         }
     }

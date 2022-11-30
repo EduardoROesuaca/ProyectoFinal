@@ -191,7 +191,7 @@ namespace ProyectoFinal.Inventory_Module
         {
             string invalidcharPattern = "[!\"·$&/()=¿¡?'_:;,|@#€*+]";
             string numbersPattern = "^\\d+$";
-            if (txtId.Text.Trim().Length == 1)
+            if (txtId.Text.Trim().Length > 0)
             {
                 MessageBox.Show(this, "Debe de limpiar todos los campos antes de registrar un nuevo producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -256,7 +256,7 @@ namespace ProyectoFinal.Inventory_Module
         {
             string invalidcharPattern = "[!\"·$&/()=¿¡?'_:;,|@#€*+]";
             string numbersPattern = "^\\d+$";
-            if (txtId.Text.Trim().Length == 1)
+            if (txtId.Text.Trim().Length > 0)
             {
                 if (Regex.IsMatch(txtName.Text.Trim(), invalidcharPattern) || txtName.Text.Trim().Length == 0)
                 {
