@@ -17,6 +17,7 @@ namespace ProyectoFinal
         #region Props
         String strConexion;
         ProductsAnalysis ProductsAnalysisForm;
+        Purchases PurchasesForm;
         #endregion
         public PurchasingModule()
         {
@@ -55,6 +56,22 @@ namespace ProyectoFinal
                 this.ProductsAnalysisForm.TopLevel = false;
                 this.pnlContainer.Controls.Add(ProductsAnalysisForm);
                 this.ProductsAnalysisForm.Show();
+            }
+        }
+
+        private void PurchasesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            lblTitle.Text = "Consulta de Pedidos";
+            if (this.PurchasesForm != null)
+            {
+                this.PurchasesForm.BringToFront();
+            }
+            else
+            {
+                this.PurchasesForm = new Purchases();
+                this.PurchasesForm.TopLevel = false;
+                this.pnlContainer.Controls.Add(PurchasesForm);
+                this.PurchasesForm.Show();
             }
         }
     }

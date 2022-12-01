@@ -30,9 +30,9 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ProductsAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PurchasesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NewPurchaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ProductsAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnlContainer = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
@@ -59,24 +59,25 @@
             this.productosToolStripMenuItem.Size = new System.Drawing.Size(111, 25);
             this.productosToolStripMenuItem.Text = "Administrar";
             // 
-            // PurchasesToolStripMenuItem
-            // 
-            this.PurchasesToolStripMenuItem.Name = "PurchasesToolStripMenuItem";
-            this.PurchasesToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
-            this.PurchasesToolStripMenuItem.Text = "Consultar Pedidos";
-            // 
-            // NewPurchaseToolStripMenuItem
-            // 
-            this.NewPurchaseToolStripMenuItem.Name = "NewPurchaseToolStripMenuItem";
-            this.NewPurchaseToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
-            this.NewPurchaseToolStripMenuItem.Text = "Registrar Pedido";
-            // 
             // ProductsAnalysisToolStripMenuItem
             // 
             this.ProductsAnalysisToolStripMenuItem.Name = "ProductsAnalysisToolStripMenuItem";
             this.ProductsAnalysisToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
             this.ProductsAnalysisToolStripMenuItem.Text = "Análisis de Productos";
             this.ProductsAnalysisToolStripMenuItem.Click += new System.EventHandler(this.ProductsAnalysisToolStripMenuItem_Click);
+            // 
+            // PurchasesToolStripMenuItem
+            // 
+            this.PurchasesToolStripMenuItem.Name = "PurchasesToolStripMenuItem";
+            this.PurchasesToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
+            this.PurchasesToolStripMenuItem.Text = "Consultar Pedidos";
+            this.PurchasesToolStripMenuItem.Click += new System.EventHandler(this.PurchasesToolStripMenuItem_Click);
+            // 
+            // NewPurchaseToolStripMenuItem
+            // 
+            this.NewPurchaseToolStripMenuItem.Name = "NewPurchaseToolStripMenuItem";
+            this.NewPurchaseToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
+            this.NewPurchaseToolStripMenuItem.Text = "Registrar Pedido";
             // 
             // lblTitle
             // 
