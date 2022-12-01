@@ -41,6 +41,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PurchasingModule";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.PurchasingModule_Load);
             this.ResumeLayout(false);
 
         }

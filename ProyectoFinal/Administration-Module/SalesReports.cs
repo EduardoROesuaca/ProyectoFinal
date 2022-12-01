@@ -16,5 +16,10 @@ namespace ProyectoFinal.Administration_Module
         {
             InitializeComponent();
         }
+
+        private void SalesReports_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

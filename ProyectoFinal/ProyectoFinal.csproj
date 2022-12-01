@@ -140,6 +140,9 @@
     <EmbeddedResource Include="Administration-Module\SalesReports.resx">
       <DependentUpon>SalesReports.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Administration-Module\UsersAdministration.resx">
+      <DependentUpon>UsersAdministration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Authentication\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>

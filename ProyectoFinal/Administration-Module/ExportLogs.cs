@@ -16,5 +16,10 @@ namespace ProyectoFinal.Administration_Module
         {
             InitializeComponent();
         }
+
+        private void ExportLogs_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

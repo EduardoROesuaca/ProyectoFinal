@@ -16,5 +16,10 @@ namespace ProyectoFinal
         {
             InitializeComponent();
         }
+
+        private void PurchasingModule_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

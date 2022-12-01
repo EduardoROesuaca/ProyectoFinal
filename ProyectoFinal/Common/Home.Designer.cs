@@ -35,18 +35,18 @@
             this.btnPurchasingModule = new System.Windows.Forms.Button();
             this.btnInvoicingModule = new System.Windows.Forms.Button();
             this.btnLogOut = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblRol = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
-            this.plnHeader = new System.Windows.Forms.Panel();
-            this.plnContainer = new System.Windows.Forms.Panel();
-            this.PBMin = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.plnHeader = new System.Windows.Forms.Panel();
+            this.PBMin = new System.Windows.Forms.PictureBox();
+            this.plnContainer = new System.Windows.Forms.Panel();
             this.plnMenu.SuspendLayout();
-            this.plnHeader.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PBMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.plnHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PBMin)).BeginInit();
             this.SuspendLayout();
             // 
             // plnMenu
@@ -140,6 +140,16 @@
             this.btnLogOut.UseVisualStyleBackColor = false;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::ProyectoFinal.Properties.Resources.LogOutLogo;
+            this.pictureBox2.Location = new System.Drawing.Point(23, 765);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
+            // 
             // lblRol
             // 
             this.lblRol.AutoSize = true;
@@ -162,6 +172,16 @@
             this.lblName.TabIndex = 2;
             this.lblName.Text = "{UserName}";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ProyectoFinal.Properties.Resources.user_128;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(63, 72);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
             // plnHeader
             // 
             this.plnHeader.Controls.Add(this.PBMin);
@@ -174,14 +194,6 @@
             this.plnHeader.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plnHeader_MouseMove);
             this.plnHeader.MouseUp += new System.Windows.Forms.MouseEventHandler(this.plnHeader_MouseUp);
             // 
-            // plnContainer
-            // 
-            this.plnContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.plnContainer.Location = new System.Drawing.Point(271, 30);
-            this.plnContainer.Name = "plnContainer";
-            this.plnContainer.Size = new System.Drawing.Size(1201, 798);
-            this.plnContainer.TabIndex = 3;
-            // 
             // PBMin
             // 
             this.PBMin.Image = global::ProyectoFinal.Properties.Resources.MinIcon;
@@ -193,25 +205,14 @@
             this.PBMin.TabStop = false;
             this.PBMin.Click += new System.EventHandler(this.PBMin_Click);
             // 
-            // pictureBox2
+            // plnContainer
             // 
-            this.pictureBox2.Image = global::ProyectoFinal.Properties.Resources.LogOutLogo;
-            this.pictureBox2.Location = new System.Drawing.Point(23, 765);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ProyectoFinal.Properties.Resources.user_128;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(63, 72);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.plnContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.plnContainer.Location = new System.Drawing.Point(271, 30);
+            this.plnContainer.Name = "plnContainer";
+            this.plnContainer.Size = new System.Drawing.Size(1201, 798);
+            this.plnContainer.TabIndex = 3;
+            this.plnContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.plnContainer_Paint);
             // 
             // Home
             // 
@@ -229,10 +230,10 @@
             this.Load += new System.EventHandler(this.Home_Load);
             this.plnMenu.ResumeLayout(false);
             this.plnMenu.PerformLayout();
-            this.plnHeader.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PBMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.plnHeader.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PBMin)).EndInit();
             this.ResumeLayout(false);
 
         }

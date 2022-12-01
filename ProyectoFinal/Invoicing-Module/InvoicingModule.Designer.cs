@@ -31,15 +31,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataFacturacion = new System.Windows.Forms.DataGridView();
-            this.ColProdID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColNombreProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColCatProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColPrecioProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColCantProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColImpuestosProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColSubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtTotalColones = new System.Windows.Forms.TextBox();
@@ -67,6 +62,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.bntPagar = new System.Windows.Forms.Button();
+            this.ColProdID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColNombreProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColCatProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColPrecioProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColCantProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColImpuestosProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColSubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataFacturacion)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,11 +78,14 @@
             this.dataFacturacion.AllowUserToDeleteRows = false;
             this.dataFacturacion.AllowUserToResizeColumns = false;
             this.dataFacturacion.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.dataFacturacion.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -95,74 +100,33 @@
             this.ColCantProd,
             this.ColImpuestosProd,
             this.ColSubTotal});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataFacturacion.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataFacturacion.Location = new System.Drawing.Point(25, 201);
             this.dataFacturacion.Name = "dataFacturacion";
             this.dataFacturacion.ReadOnly = true;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataFacturacion.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataFacturacion.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataFacturacion.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataFacturacion.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataFacturacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataFacturacion.Size = new System.Drawing.Size(1109, 400);
             this.dataFacturacion.TabIndex = 5;
             this.dataFacturacion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataFacturacion_CellContentClick);
-            // 
-            // ColProdID
-            // 
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ColProdID.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColProdID.FillWeight = 27.8342F;
-            this.ColProdID.HeaderText = "ProdID";
-            this.ColProdID.Name = "ColProdID";
-            this.ColProdID.ReadOnly = true;
-            // 
-            // ColNombreProd
-            // 
-            this.ColNombreProd.FillWeight = 532.9949F;
-            this.ColNombreProd.HeaderText = "Nombre";
-            this.ColNombreProd.Name = "ColNombreProd";
-            this.ColNombreProd.ReadOnly = true;
-            this.ColNombreProd.Width = 260;
-            // 
-            // ColCatProd
-            // 
-            this.ColCatProd.FillWeight = 27.8342F;
-            this.ColCatProd.HeaderText = "Categoria";
-            this.ColCatProd.Name = "ColCatProd";
-            this.ColCatProd.ReadOnly = true;
-            this.ColCatProd.Width = 150;
-            // 
-            // ColPrecioProd
-            // 
-            this.ColPrecioProd.FillWeight = 27.8342F;
-            this.ColPrecioProd.HeaderText = "Precio";
-            this.ColPrecioProd.Name = "ColPrecioProd";
-            this.ColPrecioProd.ReadOnly = true;
-            this.ColPrecioProd.Width = 150;
-            // 
-            // ColCantProd
-            // 
-            this.ColCantProd.FillWeight = 27.8342F;
-            this.ColCantProd.HeaderText = "Cantidad";
-            this.ColCantProd.Name = "ColCantProd";
-            this.ColCantProd.ReadOnly = true;
-            this.ColCantProd.Width = 150;
-            // 
-            // ColImpuestosProd
-            // 
-            this.ColImpuestosProd.FillWeight = 27.8342F;
-            this.ColImpuestosProd.HeaderText = "Impuestos";
-            this.ColImpuestosProd.Name = "ColImpuestosProd";
-            this.ColImpuestosProd.ReadOnly = true;
-            this.ColImpuestosProd.Width = 150;
-            // 
-            // ColSubTotal
-            // 
-            this.ColSubTotal.FillWeight = 27.8342F;
-            this.ColSubTotal.HeaderText = "SubTotal";
-            this.ColSubTotal.Name = "ColSubTotal";
-            this.ColSubTotal.ReadOnly = true;
-            this.ColSubTotal.Width = 150;
             // 
             // label8
             // 
@@ -208,7 +172,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.Location = new System.Drawing.Point(922, 2);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(171, 30);
@@ -219,7 +183,7 @@
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(922, 148);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(171, 33);
@@ -280,9 +244,9 @@
             // lblVistaPrevia
             // 
             this.lblVistaPrevia.BackColor = System.Drawing.Color.White;
-            this.lblVistaPrevia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVistaPrevia.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVistaPrevia.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblVistaPrevia.Location = new System.Drawing.Point(222, 110);
+            this.lblVistaPrevia.Location = new System.Drawing.Point(312, 110);
             this.lblVistaPrevia.Name = "lblVistaPrevia";
             this.lblVistaPrevia.Size = new System.Drawing.Size(289, 19);
             this.lblVistaPrevia.TabIndex = 22;
@@ -292,19 +256,19 @@
             // label3
             // 
             this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.label3.Location = new System.Drawing.Point(30, 110);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(186, 19);
+            this.label3.Size = new System.Drawing.Size(247, 19);
             this.label3.TabIndex = 23;
-            this.label3.Text = "Vista previa Producto";
+            this.label3.Text = "Producto seleccionado";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label4
             // 
             this.label4.BackColor = System.Drawing.Color.White;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.label4.Location = new System.Drawing.Point(30, 162);
             this.label4.Name = "label4";
@@ -315,10 +279,10 @@
             // 
             // txtCantidadProd
             // 
-            this.txtCantidadProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCantidadProd.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCantidadProd.Location = new System.Drawing.Point(156, 161);
             this.txtCantidadProd.Name = "txtCantidadProd";
-            this.txtCantidadProd.Size = new System.Drawing.Size(60, 22);
+            this.txtCantidadProd.Size = new System.Drawing.Size(60, 27);
             this.txtCantidadProd.TabIndex = 24;
             // 
             // btnBuscarNombre
@@ -334,7 +298,7 @@
             // 
             // btnQuitarProd
             // 
-            this.btnQuitarProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuitarProd.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuitarProd.Location = new System.Drawing.Point(922, 51);
             this.btnQuitarProd.Name = "btnQuitarProd";
             this.btnQuitarProd.Size = new System.Drawing.Size(171, 30);
@@ -345,7 +309,7 @@
             // 
             // btnNuevo
             // 
-            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevo.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevo.Location = new System.Drawing.Point(922, 99);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(171, 30);
@@ -445,6 +409,64 @@
             this.bntPagar.UseVisualStyleBackColor = true;
             this.bntPagar.Click += new System.EventHandler(this.bntPagar_Click);
             // 
+            // ColProdID
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ColProdID.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColProdID.FillWeight = 27.8342F;
+            this.ColProdID.HeaderText = "ProdID";
+            this.ColProdID.Name = "ColProdID";
+            this.ColProdID.ReadOnly = true;
+            // 
+            // ColNombreProd
+            // 
+            this.ColNombreProd.FillWeight = 532.9949F;
+            this.ColNombreProd.HeaderText = "Nombre";
+            this.ColNombreProd.Name = "ColNombreProd";
+            this.ColNombreProd.ReadOnly = true;
+            this.ColNombreProd.Width = 260;
+            // 
+            // ColCatProd
+            // 
+            this.ColCatProd.FillWeight = 27.8342F;
+            this.ColCatProd.HeaderText = "Categoria";
+            this.ColCatProd.Name = "ColCatProd";
+            this.ColCatProd.ReadOnly = true;
+            this.ColCatProd.Width = 150;
+            // 
+            // ColPrecioProd
+            // 
+            this.ColPrecioProd.FillWeight = 27.8342F;
+            this.ColPrecioProd.HeaderText = "Precio";
+            this.ColPrecioProd.Name = "ColPrecioProd";
+            this.ColPrecioProd.ReadOnly = true;
+            this.ColPrecioProd.Width = 150;
+            // 
+            // ColCantProd
+            // 
+            this.ColCantProd.FillWeight = 27.8342F;
+            this.ColCantProd.HeaderText = "Cantidad";
+            this.ColCantProd.Name = "ColCantProd";
+            this.ColCantProd.ReadOnly = true;
+            this.ColCantProd.Width = 150;
+            // 
+            // ColImpuestosProd
+            // 
+            this.ColImpuestosProd.FillWeight = 27.8342F;
+            this.ColImpuestosProd.HeaderText = "Impuestos";
+            this.ColImpuestosProd.Name = "ColImpuestosProd";
+            this.ColImpuestosProd.ReadOnly = true;
+            this.ColImpuestosProd.Width = 150;
+            // 
+            // ColSubTotal
+            // 
+            this.ColSubTotal.FillWeight = 27.8342F;
+            this.ColSubTotal.HeaderText = "SubTotal";
+            this.ColSubTotal.Name = "ColSubTotal";
+            this.ColSubTotal.ReadOnly = true;
+            this.ColSubTotal.Width = 150;
+            // 
             // InvoicingModule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -493,13 +515,6 @@
 
         #endregion
         private System.Windows.Forms.DataGridView dataFacturacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColProdID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColNombreProd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColCatProd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColPrecioProd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColCantProd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColImpuestosProd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColSubTotal;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtTotalColones;
@@ -527,5 +542,12 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button bntPagar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColProdID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColNombreProd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColCatProd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColPrecioProd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColCantProd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColImpuestosProd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColSubTotal;
     }
 }

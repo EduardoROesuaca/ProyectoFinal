@@ -34,9 +34,9 @@ namespace ProyectoFinal.Common
         {
             InitializeComponent();
             //cadenas de conexion de ambos servidores, no eliminar, solamente comentar la que no se requiere
-            //this.strConexion = "Data Source=DESKTOP-ASF7EIQ\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";   //GERALDO
+            this.strConexion = "Data Source=DESKTOP-ASF7EIQ\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";   //GERALDO
             //this.strConexion = "Data Source=DESKTOP-KQNBJVI\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";   //EDUARDO-DESKTOP
-            this.strConexion = "Data Source=EDUARDO\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";             //EDUARDO-LAPTOP
+            //this.strConexion = "Data Source=EDUARDO\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";             //EDUARDO-LAPTOP
         }
 
         private void Home_Load(object sender, EventArgs e)
@@ -198,6 +198,11 @@ namespace ProyectoFinal.Common
                 this.plnContainer.Controls.Add(InventoryForm);
                 this.InventoryForm.Show();
             }
+        }
+
+        private void plnContainer_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         private void plnHeader_MouseUp(object sender, MouseEventArgs e)
