@@ -82,6 +82,8 @@ namespace ProyectoFinal
             if (this.NewPurchaseForm != null)
             {
                 this.NewPurchaseForm.BringToFront();
+                this.NewPurchaseForm.loadPresentation();
+                this.NewPurchaseForm.loadProducts();
             }
             else
             {
