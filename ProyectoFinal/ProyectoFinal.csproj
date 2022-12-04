@@ -150,6 +150,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Purchasing-Module\NewPurchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Purchasing-Module\NewPurchase.Designer.cs">
+      <DependentUpon>NewPurchase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Purchasing-Module\ProductsAnalysis.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +173,12 @@
     </Compile>
     <Compile Include="Purchasing-Module\PurchasingModule.Designer.cs">
       <DependentUpon>PurchasingModule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Purchasing-Module\Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Purchasing-Module\Report.Designer.cs">
+      <DependentUpon>Report.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Administration-Module\ExportLogs.resx">
       <DependentUpon>ExportLogs.cs</DependentUpon>
@@ -207,7 +219,6 @@
     <EmbeddedResource Include="Invoicing-Module\PassVal.resx">
       <DependentUpon>PassVal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Purchasing-Module\OrderReport.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -218,6 +229,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Purchasing-Module\NewPurchase.resx">
+      <DependentUpon>NewPurchase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Purchasing-Module\ProductsAnalysis.resx">
       <DependentUpon>ProductsAnalysis.cs</DependentUpon>
     </EmbeddedResource>
@@ -226,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Purchasing-Module\PurchasingModule.resx">
       <DependentUpon>PurchasingModule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Purchasing-Module\Report.resx">
+      <DependentUpon>Report.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

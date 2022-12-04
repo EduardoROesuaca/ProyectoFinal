@@ -20,8 +20,8 @@ namespace ProyectoFinal.Purchasing_Module
         {
             InitializeComponent();
             //this.strConexion = "Data Source=DESKTOP-ASF7EIQ\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";   //GERALDO
-            //this.strConexion = "Data Source=DESKTOP-KQNBJVI\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";   //EDUARDO-DESKTOP
-            this.strConexion = "Data Source=EDUARDO\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";             //EDUARDO-LAPTOP
+            this.strConexion = "Data Source=DESKTOP-KQNBJVI\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";   //EDUARDO-DESKTOP
+            //this.strConexion = "Data Source=EDUARDO\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";             //EDUARDO-LAPTOP
         }
 
         private void Purchases_Load(object sender, EventArgs e)
@@ -62,7 +62,13 @@ namespace ProyectoFinal.Purchasing_Module
 
         private void btnReport_Click(object sender, EventArgs e)
         {
-
+            Report rp = new Report();
+            rp.Show();
+            rp.SetDesktopLocation(495, 132);
+            rp.loadReport(int.Parse(DGV.Rows[DGV.CurrentRow.Index].Cells[0].Value.ToString()),
+                double.Parse(DGV.Rows[DGV.CurrentRow.Index].Cells[4].Value.ToString()),
+                double.Parse(DGV.Rows[DGV.CurrentRow.Index].Cells[5].Value.ToString()),
+                double.Parse(DGV.Rows[DGV.CurrentRow.Index].Cells[6].Value.ToString()));
         }
 
         private void btnSearchByOrderID_Click(object sender, EventArgs e)

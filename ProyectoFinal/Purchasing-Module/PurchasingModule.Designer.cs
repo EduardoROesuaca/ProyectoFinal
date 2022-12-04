@@ -78,6 +78,7 @@
             this.NewPurchaseToolStripMenuItem.Name = "NewPurchaseToolStripMenuItem";
             this.NewPurchaseToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
             this.NewPurchaseToolStripMenuItem.Text = "Registrar Pedido";
+            this.NewPurchaseToolStripMenuItem.Click += new System.EventHandler(this.NewPurchaseToolStripMenuItem_Click);
             // 
             // lblTitle
             // 
