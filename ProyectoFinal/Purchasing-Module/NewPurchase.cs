@@ -118,8 +118,8 @@ namespace ProyectoFinal.Purchasing_Module
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 int number;
                 if (!int.TryParse(txtQty.Text.Trim(), out number) || number < 1)
                 {
@@ -143,12 +143,11 @@ namespace ProyectoFinal.Purchasing_Module
                     txtTotal.Text = "¢" + total.ToString();
 
                 }
-            //}
-            //catch (Exception ex)
-            //{
-                //MessageBox.Show(ex.Message);
-                //MessageBox.Show(this, "Ingrese un ID de producto válido e intentelo de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //} 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "Ingrese un ID de producto válido e intentelo de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } 
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
