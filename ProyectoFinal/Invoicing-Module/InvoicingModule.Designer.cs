@@ -345,7 +345,7 @@
             // 
             // btnBuscarProd
             // 
-            this.btnBuscarProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarProd.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscarProd.Location = new System.Drawing.Point(389, 51);
             this.btnBuscarProd.Name = "btnBuscarProd";
             this.btnBuscarProd.Size = new System.Drawing.Size(153, 30);

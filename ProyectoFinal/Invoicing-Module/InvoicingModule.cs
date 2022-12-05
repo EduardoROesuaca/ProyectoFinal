@@ -280,7 +280,8 @@ namespace ProyectoFinal
 
         private void btnBuscarNombre_Click(object sender, EventArgs e)
         {
-
+            ProductSelect PS = new ProductSelect();
+            PS.ShowDialog();
         }
 
         private void dataFacturacion_CellContentClick(object sender, DataGridViewCellEventArgs e)

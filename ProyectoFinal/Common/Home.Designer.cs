@@ -67,6 +67,7 @@
             this.plnMenu.Name = "plnMenu";
             this.plnMenu.Size = new System.Drawing.Size(271, 828);
             this.plnMenu.TabIndex = 0;
+            this.plnMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.plnMenu_Paint);
             // 
             // btnReports
             // 
