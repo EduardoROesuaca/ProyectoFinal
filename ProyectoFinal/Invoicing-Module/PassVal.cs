@@ -18,7 +18,18 @@ namespace ProyectoFinal.Invoicing_Module
         public PassVal()
         {
             InitializeComponent();
-            this.strConexion = "Data Source=DESKTOP-ASF7EIQ\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";
+            if (Environment.MachineName.Equals("EDUARDO"))
+            {
+                this.strConexion = "Data Source=EDUARDO\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";             //EDUARDO-LAPTOP
+            }
+            else if (Environment.MachineName.Equals("DESKTOP-KQNBJVI"))
+            {
+                this.strConexion = "Data Source=DESKTOP-KQNBJVI\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";   //EDUARDO-DESKTOP
+            }
+            else
+            {
+                this.strConexion = "Data Source=DESKTOP-ASF7EIQ\\SQLEXPRESS;Initial Catalog=Pharmacy;Integrated Security=True";   //GERALDO
+            }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
