@@ -55,5 +55,23 @@ namespace ProyectoFinal.Invoicing_Module
                 MessageBox.Show("Ha ocurrido un error " +ex);
             }
         }
+
+        private void btnSelectProduct_Click(object sender, EventArgs e)
+        {
+            if (DGVBuscarProd.Rows.Count == 0)
+            {
+                return;
+            }
+            else
+            {
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

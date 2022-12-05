@@ -5,6 +5,7 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace ProyectoFinal
@@ -99,123 +100,134 @@ namespace ProyectoFinal
             double subtotal = 0;
             try
             {
-                if ((Convert.ToDouble(UserCache.CantidadProd) > Double.Parse(txtCantidadProd.Text)) && (Double.Parse(txtCantidadProd.Text) > 0))
+                if (string.IsNullOrEmpty(txtCantidadProd.Text))
                 {
-                    if (contFila == 0)
+                    MessageBox.Show("Debe completar la informacion");
+
+                    return;
+                }
+                else
+                {
+                    if ((Convert.ToDouble(UserCache.CantidadProd) > Double.Parse(txtCantidadProd.Text)) && (Double.Parse(txtCantidadProd.Text) > 0))
                     {
-                        dataFacturacion.Rows.Add(UserCache.ProductoID.ToString(), UserCache.ProductName.ToString(),
-                            UserCache.CategoriaID.ToString(), UserCache.Price.ToString(), txtCantidadProd.Text);
-                        if (UserCache.CategoriaID.ToString() == "1")
+                        if (contFila == 0)
                         {
-                            subtotal = Convert.ToDouble(UserCache.Price) * (Double.Parse(txtCantidadProd.Text));
-                            iva = subtotal * 0.13;
-                            subtotal += iva;
-                            dataFacturacion.Rows[contFila].Cells[5].Value = iva;
-                            dataFacturacion.Rows[contFila].Cells[6].Value = subtotal;
-                            txtBuscarProdID.Text = "";
-                            txtCantidadProd.Text = "";
-                            lblVistaPrevia.Text = "";
-                            contFila++;
-                        }
-                        if (UserCache.CategoriaID.ToString() == "2" || UserCache.CategoriaID.ToString() == "3")
-                        {
-                            subtotal = Convert.ToDouble(UserCache.Price) * (Double.Parse(txtCantidadProd.Text));
-                            iva = subtotal * 0.02;
-                            subtotal += iva;
-                            dataFacturacion.Rows[contFila].Cells[5].Value = iva;
-                            dataFacturacion.Rows[contFila].Cells[6].Value = subtotal;
-                            txtBuscarProdID.Text = "";
-                            txtCantidadProd.Text = "";
-                            lblVistaPrevia.Text = "";
-                            contFila++;
-
-                        }
-                    }
-                    else
-                    {
-                        foreach (DataGridViewRow Fila in dataFacturacion.Rows)
-                        {
-
-                            if (Fila.Cells[0].Value.ToString() == txtBuscarProdID.Text)
-                            {
-                                existe = true;
-                                numFila = Fila.Index;
-                            }
-                        }
-
-                        if (existe == true)
-                        {
-                            dataFacturacion.Rows[numFila].Cells[4].Value = (Convert.ToDouble(txtCantidadProd.Text) +
-                                Convert.ToDouble(dataFacturacion.Rows[numFila].Cells[4].Value)).ToString();
-
+                            dataFacturacion.Rows.Add(UserCache.ProductoID.ToString(), UserCache.ProductName.ToString(),
+                                UserCache.CategoriaID.ToString(), UserCache.Price.ToString(), txtCantidadProd.Text);
                             if (UserCache.CategoriaID.ToString() == "1")
                             {
                                 subtotal = Convert.ToDouble(UserCache.Price) * (Double.Parse(txtCantidadProd.Text));
                                 iva = subtotal * 0.13;
                                 subtotal += iva;
-                                dataFacturacion.Rows[numFila].Cells[5].Value = iva;
-                                dataFacturacion.Rows[numFila].Cells[6].Value = subtotal;
+                                dataFacturacion.Rows[contFila].Cells[5].Value = iva;
+                                dataFacturacion.Rows[contFila].Cells[6].Value = subtotal;
                                 txtBuscarProdID.Text = "";
                                 txtCantidadProd.Text = "";
                                 lblVistaPrevia.Text = "";
+                                contFila++;
                             }
-
                             if (UserCache.CategoriaID.ToString() == "2" || UserCache.CategoriaID.ToString() == "3")
                             {
                                 subtotal = Convert.ToDouble(UserCache.Price) * (Double.Parse(txtCantidadProd.Text));
                                 iva = subtotal * 0.02;
                                 subtotal += iva;
-                                dataFacturacion.Rows[numFila].Cells[5].Value = iva;
-                                dataFacturacion.Rows[numFila].Cells[6].Value = subtotal;
+                                dataFacturacion.Rows[contFila].Cells[5].Value = iva;
+                                dataFacturacion.Rows[contFila].Cells[6].Value = subtotal;
                                 txtBuscarProdID.Text = "";
                                 txtCantidadProd.Text = "";
                                 lblVistaPrevia.Text = "";
+                                contFila++;
+
                             }
                         }
                         else
                         {
-                            dataFacturacion.Rows.Add(UserCache.ProductoID.ToString(), UserCache.ProductName.ToString(),
-                                                UserCache.CategoriaID.ToString(), UserCache.Price.ToString(), txtCantidadProd.Text);
-                            if (UserCache.CategoriaID.ToString() == "1")
+                            foreach (DataGridViewRow Fila in dataFacturacion.Rows)
                             {
-                                subtotal = Convert.ToDouble(UserCache.Price) * (Double.Parse(txtCantidadProd.Text));
-                                iva = subtotal * 0.13;
-                                subtotal += iva;
-                                dataFacturacion.Rows[contFila].Cells[5].Value = iva;
-                                dataFacturacion.Rows[contFila].Cells[6].Value = subtotal;
-                                txtBuscarProdID.Text = "";
-                                txtCantidadProd.Text = "";
-                                lblVistaPrevia.Text = "";
-                                contFila++;
-                            }
-                            if (UserCache.CategoriaID.ToString() == "2" || UserCache.CategoriaID.ToString() == "3")
-                            {
-                                subtotal = Convert.ToDouble(UserCache.Price) * (Double.Parse(txtCantidadProd.Text));
-                                iva = subtotal * 0.02;
-                                subtotal += iva;
-                                dataFacturacion.Rows[contFila].Cells[5].Value = iva;
-                                dataFacturacion.Rows[contFila].Cells[6].Value = subtotal;
-                                txtBuscarProdID.Text = "";
-                                txtCantidadProd.Text = "";
-                                lblVistaPrevia.Text = "";
-                                contFila++;
 
+                                if (Fila.Cells[0].Value.ToString() == txtBuscarProdID.Text)
+                                {
+                                    existe = true;
+                                    numFila = Fila.Index;
+                                }
+                            }
+
+                            if (existe == true)
+                            {
+                                dataFacturacion.Rows[numFila].Cells[4].Value = (Convert.ToDouble(txtCantidadProd.Text) +
+                                    Convert.ToDouble(dataFacturacion.Rows[numFila].Cells[4].Value)).ToString();
+
+                                if (UserCache.CategoriaID.ToString() == "1")
+                                {
+                                    subtotal = Convert.ToDouble(UserCache.Price) * (Double.Parse(txtCantidadProd.Text));
+                                    iva = subtotal * 0.13;
+                                    subtotal += iva;
+                                    dataFacturacion.Rows[numFila].Cells[5].Value = iva;
+                                    dataFacturacion.Rows[numFila].Cells[6].Value = subtotal;
+                                    txtBuscarProdID.Text = "";
+                                    txtCantidadProd.Text = "";
+                                    lblVistaPrevia.Text = "";
+                                }
+
+                                if (UserCache.CategoriaID.ToString() == "2" || UserCache.CategoriaID.ToString() == "3")
+                                {
+                                    subtotal = Convert.ToDouble(UserCache.Price) * (Double.Parse(txtCantidadProd.Text));
+                                    iva = subtotal * 0.02;
+                                    subtotal += iva;
+                                    dataFacturacion.Rows[numFila].Cells[5].Value = iva;
+                                    dataFacturacion.Rows[numFila].Cells[6].Value = subtotal;
+                                    txtBuscarProdID.Text = "";
+                                    txtCantidadProd.Text = "";
+                                    lblVistaPrevia.Text = "";
+                                }
+                            }
+                            else
+                            {
+                                dataFacturacion.Rows.Add(UserCache.ProductoID.ToString(), UserCache.ProductName.ToString(),
+                                                    UserCache.CategoriaID.ToString(), UserCache.Price.ToString(), txtCantidadProd.Text);
+                                if (UserCache.CategoriaID.ToString() == "1")
+                                {
+                                    subtotal = Convert.ToDouble(UserCache.Price) * (Double.Parse(txtCantidadProd.Text));
+                                    iva = subtotal * 0.13;
+                                    subtotal += iva;
+                                    dataFacturacion.Rows[contFila].Cells[5].Value = iva;
+                                    dataFacturacion.Rows[contFila].Cells[6].Value = subtotal;
+                                    txtBuscarProdID.Text = "";
+                                    txtCantidadProd.Text = "";
+                                    lblVistaPrevia.Text = "";
+                                    contFila++;
+                                }
+                                if (UserCache.CategoriaID.ToString() == "2" || UserCache.CategoriaID.ToString() == "3")
+                                {
+                                    subtotal = Convert.ToDouble(UserCache.Price) * (Double.Parse(txtCantidadProd.Text));
+                                    iva = subtotal * 0.02;
+                                    subtotal += iva;
+                                    dataFacturacion.Rows[contFila].Cells[5].Value = iva;
+                                    dataFacturacion.Rows[contFila].Cells[6].Value = subtotal;
+                                    txtBuscarProdID.Text = "";
+                                    txtCantidadProd.Text = "";
+                                    lblVistaPrevia.Text = "";
+                                    contFila++;
+
+                                }
                             }
                         }
+                        total = 0;
+                        foreach (DataGridViewRow Fila in dataFacturacion.Rows)
+                        {
+                            total += Convert.ToDouble(Fila.Cells[6].Value);
+                        }
+                        txtTotalColones.Text = total.ToString();
+                        txtTotalDolares.Text = (total / 620).ToString("0.##");
+                        Cambio();
                     }
-                    total = 0;
-                    foreach (DataGridViewRow Fila in dataFacturacion.Rows)
+                    else
                     {
-                        total += Convert.ToDouble(Fila.Cells[6].Value);
+                        MessageBox.Show("Cantidad no disponible");
                     }
-                    txtTotalColones.Text = total.ToString();
-                    txtTotalDolares.Text = (total / 620).ToString("0.##");
-                    Cambio();
+
                 }
-                else
-                {
-                    MessageBox.Show("Cantidad no disponible");
-                }
+
             }
             catch (Exception ex)
             {
@@ -295,7 +307,10 @@ namespace ProyectoFinal
             PS.ShowDialog();
             if (PS.DialogResult == DialogResult.OK)
             {
-
+                DataGridViewRow dgRow = PS.DGVBuscarProd.CurrentRow;
+                txtBuscarProdID.Text = dgRow.Cells[0].Value.ToString();
+                lblVistaPrevia.Text = dgRow.Cells[5].Value.ToString();
+                txtCantidadProd.Focus();
             }
         }
 
