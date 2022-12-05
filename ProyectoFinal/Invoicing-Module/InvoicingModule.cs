@@ -282,6 +282,10 @@ namespace ProyectoFinal
         {
             ProductSelect PS = new ProductSelect();
             PS.ShowDialog();
+            if (PS.DialogResult == DialogResult.OK)
+            {
+
+            }
         }
 
         private void dataFacturacion_CellContentClick(object sender, DataGridViewCellEventArgs e)
