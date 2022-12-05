@@ -66,6 +66,7 @@ namespace ProyectoFinal
             if (this.PurchasesForm != null)
             {
                 this.PurchasesForm.BringToFront();
+                this.PurchasesForm.loadPurchases();
             }
             else
             {

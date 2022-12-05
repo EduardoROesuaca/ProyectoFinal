@@ -1,4 +1,5 @@
 ﻿using Microsoft.Reporting.WinForms;
+using ProyectoFinal.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -83,7 +84,7 @@ namespace ProyectoFinal.Purchasing_Module
 
         private void cmbxProducts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            for(int i = 0; i < dtProducts.Rows.Count; i++)
+            for (int i = 0; i < dtProducts.Rows.Count; i++)
             {
                 if (dtProducts.Rows[i]["ProductId"].Equals(cmbxProducts.SelectedValue))
                 {
@@ -97,7 +98,7 @@ namespace ProyectoFinal.Purchasing_Module
 
         private void btnSearchByProductID_Click(object sender, EventArgs e)
         {
-            if(txtProductId.Text.Trim().Length < 1)
+            if (txtProductId.Text.Trim().Length < 1)
             {
                 MessageBox.Show(this, "Ingrese el codígo delproducto que desea buscar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -112,7 +113,7 @@ namespace ProyectoFinal.Purchasing_Module
                         cmbxProducts.SelectedValue = int.Parse(txtProductId.Text.Trim());
                     }
                 }
-                if(!flag) MessageBox.Show(this, "No existen productos con este codigo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); txtProductId.ResetText();
+                if (!flag) MessageBox.Show(this, "No existen productos con este codigo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); txtProductId.ResetText();
             }
         }
 
@@ -127,27 +128,29 @@ namespace ProyectoFinal.Purchasing_Module
                 }
                 else
                 {
+                    int index = getIndexOf(cmbxProducts.SelectedValue.ToString());
+                    if (index != -100)
+                    {
+                        DGV.Rows.RemoveAt(index);
+                    }
                     double tempSubtotal = int.Parse(txtQty.Text.Trim()) * double.Parse(txtPrice.Text.Trim());
                     subtotal += tempSubtotal;
-                    double tempTax = getTaxes(int.Parse(txtProductId.Text.Trim()),tempSubtotal);
-                    taxes += tempTax;
-                    total += tempSubtotal + tempTax;
+                    double tempTax = getTaxes(int.Parse(txtProductId.Text.Trim()), tempSubtotal);
 
                     DGV.Rows.Insert(0,
                         cmbxProducts.SelectedValue, txtName.Text,
-                        txtQty.Text.Trim(),txtPrice.Text.Trim(), tempSubtotal, tempTax, tempSubtotal+tempTax);
+                        txtQty.Text.Trim(), txtPrice.Text.Trim(), tempSubtotal, tempTax, tempSubtotal + tempTax);
 
                     btnClear_Click(sender, e);
-                    txtSubTotal.Text = "¢"+subtotal.ToString();
-                    txtTaxes.Text = "¢" + taxes.ToString();
-                    txtTotal.Text = "¢" + total.ToString();
+                    updateTotal();
+
 
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(this, "Ingrese un ID de producto válido e intentelo de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } 
+            }
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -156,11 +159,40 @@ namespace ProyectoFinal.Purchasing_Module
             {
                 if (DGV.Rows.Count == 0)
                 {
-
+                    MessageBox.Show(this, "Ingrese al menos un producto a la orden e intentelo nuevamente!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-
+                    using (SqlConnection connection = new SqlConnection(strConexion))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("SP_InsertNewOrder", connection))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@UserID", 1);
+                            cmd.Parameters.AddWithValue("@Subtotal", double.Parse(txtSubTotal.Text.Trim()));
+                            cmd.Parameters.AddWithValue("@Taxes", double.Parse(txtTaxes.Text.Trim()));
+                            cmd.Parameters.AddWithValue("@Total", double.Parse(txtTotal.Text.Trim()));
+                            connection.Open();
+                            using (SqlDataAdapter sda = new SqlDataAdapter())
+                            {
+                                sda.SelectCommand = cmd;
+                                using (DataTable dt = new DataTable())
+                                {
+                                    sda.Fill(dt);
+                                    if (insertProducts(int.Parse(dt.Rows[0][0].ToString())))
+                                    {
+                                        MessageBox.Show(this, "Orden registrada exitosamente!", "Excelente!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        DGV.Rows.Clear();
+                                        btnClear_Click(sender, e);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(this, "Error al registrar la orden, intentelo nuevamente!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -179,7 +211,7 @@ namespace ProyectoFinal.Purchasing_Module
                     using (SqlConnection connection = new SqlConnection(strConexion))
                     {
                         connection.Open();
-                        SqlDataAdapter da = new SqlDataAdapter("SELECT Rate FROM DBO.Taxes WHERE TaxId="+ TaxID, connection);
+                        SqlDataAdapter da = new SqlDataAdapter("SELECT Rate FROM DBO.Taxes WHERE TaxId=" + TaxID, connection);
                         da.Fill(dtt);
                         double.TryParse(dtt.Rows[0]["Rate"].ToString().Trim(), out TaxRate);
                         connection.Close();
@@ -187,8 +219,86 @@ namespace ProyectoFinal.Purchasing_Module
                     }
                 }
             }
-            return TaxRate*Subtotal*0.01;
+            return TaxRate * Subtotal * 0.01;
         }
 
+        private void DGV_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                cmbxProducts.SelectedValue = DGV.Rows[DGV.CurrentRow.Index].Cells[0].Value.ToString();
+                txtQty.Text = DGV.Rows[DGV.CurrentRow.Index].Cells[2].Value.ToString();
+            }
+        }
+
+        public int getIndexOf(String ProductID)
+        {
+
+            for (int i = 0; i < DGV.Rows.Count; i++)
+            {
+                if (DGV.Rows[i].Cells[0].Value.ToString().Equals(ProductID))
+                {
+                    return i;
+                }
+            }
+            return -100;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (txtProductId.Text.Trim().Length < 1)
+            {
+                MessageBox.Show(this, "Seleccione la linea del producto que desea eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (MessageBox.Show(this.DGV, "Se eliminara el producto, desea continuar?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    DGV.Rows.RemoveAt(getIndexOf(txtProductId.Text.Trim()));
+                    updateTotal();
+                }
+            }
+        }
+
+        public void updateTotal(){
+            double sub = 0;
+            double tax = 0;
+            double tot = 0;
+            foreach (DataGridViewRow row in DGV.Rows)
+            {
+                sub += double.Parse(row.Cells[4].Value.ToString());
+                tax += double.Parse(row.Cells[5].Value.ToString());
+                tot += double.Parse(row.Cells[6].Value.ToString());
+            }
+            txtSubTotal.Text = sub.ToString();
+            txtTaxes.Text = tax.ToString();
+            txtTotal.Text = tot.ToString();
+        }
+
+        public bool insertProducts(int OrderID)
+        {
+            bool flag = true;
+            foreach (DataGridViewRow row in DGV.Rows)
+            {
+                using (SqlConnection connection = new SqlConnection(strConexion))
+                {
+                    using (SqlCommand cmd = new SqlCommand("SP_InsertNewOrderDetail", connection))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@OrderID", OrderID);
+                        cmd.Parameters.AddWithValue("@ProductID", row.Cells[0].Value);
+                        cmd.Parameters.AddWithValue("@Qty", row.Cells[2].Value);
+                        connection.Open();
+                        int rows = cmd.ExecuteNonQuery();
+                        if (rows != 2)
+                        {
+                            flag = false;
+                            break;
+                        }
+                    }
+                }
+            }
+            return flag;
+        }
     }
 }

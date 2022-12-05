@@ -28,10 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DGV = new System.Windows.Forms.DataGridView();
+            this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Product = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotal1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.taxes1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.btnSearchByProductID = new System.Windows.Forms.PictureBox();
             this.txtProductId = new System.Windows.Forms.TextBox();
@@ -54,13 +61,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.cmbxProducts = new System.Windows.Forms.ComboBox();
             this.btnAddProduct = new System.Windows.Forms.Button();
-            this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Product = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subtotal1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.taxes1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearchByProductID)).BeginInit();
             this.SuspendLayout();
@@ -71,19 +72,19 @@
             this.DGV.AllowUserToDeleteRows = false;
             this.DGV.AllowUserToResizeColumns = false;
             this.DGV.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.DGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.DGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductID,
@@ -93,14 +94,14 @@
             this.subtotal1,
             this.taxes1,
             this.total1});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGV.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGV.DefaultCellStyle = dataGridViewCellStyle3;
             this.DGV.Location = new System.Drawing.Point(12, 215);
             this.DGV.MultiSelect = false;
             this.DGV.Name = "DGV";
@@ -109,6 +110,49 @@
             this.DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGV.Size = new System.Drawing.Size(1153, 326);
             this.DGV.TabIndex = 64;
+            this.DGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_CellClick);
+            // 
+            // ProductID
+            // 
+            this.ProductID.HeaderText = "ID Producto";
+            this.ProductID.Name = "ProductID";
+            this.ProductID.ReadOnly = true;
+            // 
+            // Product
+            // 
+            this.Product.HeaderText = "Producto";
+            this.Product.Name = "Product";
+            this.Product.ReadOnly = true;
+            // 
+            // Qty
+            // 
+            this.Qty.HeaderText = "Cantidad";
+            this.Qty.Name = "Qty";
+            this.Qty.ReadOnly = true;
+            // 
+            // price
+            // 
+            this.price.HeaderText = "Precio";
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            // 
+            // subtotal1
+            // 
+            this.subtotal1.HeaderText = "Subtotal";
+            this.subtotal1.Name = "subtotal1";
+            this.subtotal1.ReadOnly = true;
+            // 
+            // taxes1
+            // 
+            this.taxes1.HeaderText = "Impuestos";
+            this.taxes1.Name = "taxes1";
+            this.taxes1.ReadOnly = true;
+            // 
+            // total1
+            // 
+            this.total1.HeaderText = "Total";
+            this.total1.Name = "total1";
+            this.total1.ReadOnly = true;
             // 
             // btnConfirm
             // 
@@ -181,7 +225,7 @@
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(769, 161);
+            this.btnClear.Location = new System.Drawing.Point(823, 163);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(123, 37);
             this.btnClear.TabIndex = 89;
@@ -318,7 +362,7 @@
             // btnAddProduct
             // 
             this.btnAddProduct.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddProduct.Location = new System.Drawing.Point(898, 161);
+            this.btnAddProduct.Location = new System.Drawing.Point(952, 163);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(123, 37);
             this.btnAddProduct.TabIndex = 103;
@@ -326,47 +370,16 @@
             this.btnAddProduct.UseVisualStyleBackColor = true;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
-            // ProductID
+            // btnDelete
             // 
-            this.ProductID.HeaderText = "ID Producto";
-            this.ProductID.Name = "ProductID";
-            this.ProductID.ReadOnly = true;
-            // 
-            // Product
-            // 
-            this.Product.HeaderText = "Producto";
-            this.Product.Name = "Product";
-            this.Product.ReadOnly = true;
-            // 
-            // Qty
-            // 
-            this.Qty.HeaderText = "Cantidad";
-            this.Qty.Name = "Qty";
-            this.Qty.ReadOnly = true;
-            // 
-            // price
-            // 
-            this.price.HeaderText = "Precio";
-            this.price.Name = "price";
-            this.price.ReadOnly = true;
-            // 
-            // subtotal1
-            // 
-            this.subtotal1.HeaderText = "Subtotal";
-            this.subtotal1.Name = "subtotal1";
-            this.subtotal1.ReadOnly = true;
-            // 
-            // taxes1
-            // 
-            this.taxes1.HeaderText = "Impuestos";
-            this.taxes1.Name = "taxes1";
-            this.taxes1.ReadOnly = true;
-            // 
-            // total1
-            // 
-            this.total1.HeaderText = "Total";
-            this.total1.Name = "total1";
-            this.total1.ReadOnly = true;
+            this.btnDelete.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(694, 163);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(123, 37);
+            this.btnDelete.TabIndex = 104;
+            this.btnDelete.Text = "Eliminar";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // NewPurchase
             // 
@@ -374,6 +387,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(1177, 715);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAddProduct);
             this.Controls.Add(this.cmbxProducts);
             this.Controls.Add(this.txtTotal);
@@ -442,5 +456,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal1;
         private System.Windows.Forms.DataGridViewTextBoxColumn taxes1;
         private System.Windows.Forms.DataGridViewTextBoxColumn total1;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
