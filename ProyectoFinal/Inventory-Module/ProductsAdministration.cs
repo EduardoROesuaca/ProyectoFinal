@@ -238,6 +238,7 @@ namespace ProyectoFinal.Inventory_Module
                                     {
                                         loadProducts();
                                         btnClear_Click(sender, e);
+                                        insertLog("El usuario{"+UserCache.Name+"} ha registrado un nuevo producto!");
                                         MessageBox.Show(this, "Producto registrado!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }
                                     else
@@ -302,6 +303,7 @@ namespace ProyectoFinal.Inventory_Module
                                     {
                                         loadProducts();
                                         btnClear_Click(sender, e);
+                                        insertLog("El usuario{" + UserCache.Name + "} ha actualizado los datos del producto{"+txtName.Text.Trim()+"}");
                                         MessageBox.Show(this, "Producto actualizado!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }
                                     else
@@ -341,6 +343,7 @@ namespace ProyectoFinal.Inventory_Module
                             {
                                 loadProducts();
                                 btnClear_Click(sender, e);
+                                insertLog("El usuario{" + UserCache.Name + "} ha eliminado el producto{"+txtName.Text.Trim()+"}");
                                 MessageBox.Show(this, "Producto eliminado!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
@@ -360,6 +363,19 @@ namespace ProyectoFinal.Inventory_Module
                 MessageBox.Show(this, "Seleccione el producto que desea eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+        public void insertLog(String Messsage)
+        {
+            using (SqlConnection connection = new SqlConnection(strConexion))
+            {
+                using (SqlCommand cmd = new SqlCommand("SP_InsertLog", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@UserID", UserCache.UserID);
+                    cmd.Parameters.AddWithValue("@message", Messsage);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

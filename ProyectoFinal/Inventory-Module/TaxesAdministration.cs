@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoFinal.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -75,6 +76,7 @@ namespace ProyectoFinal.Inventory_Module
                         {
                             loadTaxes();
                             btnClear_Click(sender, e);
+                            insertLog("El usuario{" + UserCache.Name + "} ha eliminado el impuesto {"+txtName.Text.Trim()+"}");
                             MessageBox.Show(this, "Registro de impuesto eliminado!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
@@ -133,6 +135,7 @@ namespace ProyectoFinal.Inventory_Module
                                     {
                                         loadTaxes();
                                         btnClear_Click(sender, e);
+                                        insertLog("El usuario{" + UserCache.Name + "} ha actualizado los detalles del impuesto{"+txtName.Text.Trim()+"}");
                                         MessageBox.Show(this, "Detalles de impuesto actualizados exitosamente!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }
                                     else
@@ -192,6 +195,7 @@ namespace ProyectoFinal.Inventory_Module
                                     {
                                         loadTaxes();
                                         btnClear_Click(sender, e);
+                                        insertLog("El usuario{" + UserCache.Name + "} ha registrado un nuevo impuesto!");
                                         MessageBox.Show(this, "Impuesto registrado exitosamente!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }
                                     else
@@ -217,6 +221,20 @@ namespace ProyectoFinal.Inventory_Module
             txtRate.Text = DGV.Rows[DGV.CurrentRow.Index].Cells[2].Value.ToString();
             txtDescription.Text = DGV.Rows[DGV.CurrentRow.Index].Cells[3].Value.ToString();
 
+        }
+
+        public void insertLog(String Messsage)
+        {
+            using (SqlConnection connection = new SqlConnection(strConexion))
+            {
+                using (SqlCommand cmd = new SqlCommand("SP_InsertLog", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@UserID", UserCache.UserID);
+                    cmd.Parameters.AddWithValue("@message", Messsage);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

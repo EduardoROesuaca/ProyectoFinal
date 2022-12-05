@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoFinal.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -81,6 +82,7 @@ namespace ProyectoFinal.Inventory_Module
                         {
                             loadSuppliers();
                             btnClear_Click(sender, e);
+                            insertLog("El usuario{" + UserCache.Name + "} ha eliminado al proveedor {"+txtName.Text.Trim()+"}");
                             MessageBox.Show(this, "Proveedor eliminado!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
@@ -154,6 +156,7 @@ namespace ProyectoFinal.Inventory_Module
                                         {
                                             loadSuppliers();
                                             btnClear_Click(sender, e);
+                                            insertLog("El usuario{" + UserCache.Name + "} ha actualizado los datos del proveedor{"+txtName.Text.Trim()+"}!");
                                             MessageBox.Show(this, "Proveedor actualizado!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         }
                                         else
@@ -223,6 +226,7 @@ namespace ProyectoFinal.Inventory_Module
                                         {
                                             loadSuppliers();
                                             btnClear_Click(sender, e);
+                                            insertLog("El usuario{" + UserCache.Name + "} ha registrado un nuevo proveedor!");
                                             MessageBox.Show(this, "Proveedor registrado!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         }
                                         else
@@ -244,6 +248,20 @@ namespace ProyectoFinal.Inventory_Module
             else
             {
                 MessageBox.Show(this, "Limpie los campos antes de registrar un nuevo suplidor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void insertLog(String Messsage)
+        {
+            using (SqlConnection connection = new SqlConnection(strConexion))
+            {
+                using (SqlCommand cmd = new SqlCommand("SP_InsertLog", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@UserID", UserCache.UserID);
+                    cmd.Parameters.AddWithValue("@message", Messsage);
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
     }

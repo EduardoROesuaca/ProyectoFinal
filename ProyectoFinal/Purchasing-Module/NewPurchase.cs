@@ -1,4 +1,5 @@
 ﻿using Microsoft.Reporting.WinForms;
+using Microsoft.ReportingServices.Diagnostics.Internal;
 using ProyectoFinal.Common;
 using System;
 using System.Collections.Generic;
@@ -168,7 +169,7 @@ namespace ProyectoFinal.Purchasing_Module
                         using (SqlCommand cmd = new SqlCommand("SP_InsertNewOrder", connection))
                         {
                             cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.Parameters.AddWithValue("@UserID", 1);
+                            cmd.Parameters.AddWithValue("@UserID", UserCache.UserID);
                             cmd.Parameters.AddWithValue("@Subtotal", double.Parse(txtSubTotal.Text.Trim()));
                             cmd.Parameters.AddWithValue("@Taxes", double.Parse(txtTaxes.Text.Trim()));
                             cmd.Parameters.AddWithValue("@Total", double.Parse(txtTotal.Text.Trim()));
@@ -184,6 +185,7 @@ namespace ProyectoFinal.Purchasing_Module
                                         MessageBox.Show(this, "Orden registrada exitosamente!", "Excelente!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         DGV.Rows.Clear();
                                         btnClear_Click(sender, e);
+                                        insertLog("El usuario {"+UserCache.Name+"} ha registrado una nueva orden!");
                                     }
                                     else
                                     {
@@ -299,6 +301,19 @@ namespace ProyectoFinal.Purchasing_Module
                 }
             }
             return flag;
+        }
+        public void insertLog(String Messsage)
+        {
+            using (SqlConnection connection = new SqlConnection(strConexion))
+            {
+                using (SqlCommand cmd = new SqlCommand("SP_InsertLog", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@UserID", UserCache.UserID);
+                    cmd.Parameters.AddWithValue("@message", Messsage);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

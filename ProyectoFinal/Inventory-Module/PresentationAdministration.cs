@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoFinal.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -69,6 +70,7 @@ namespace ProyectoFinal.Inventory_Module
                         {
                             loadPresentation();
                             btnClear_Click(sender, e);
+                            insertLog("El usuario{" + UserCache.Name + "} ha eliminado la presentacion {"+txtDescription.Text.Trim()+"}");
                             MessageBox.Show(this, "Presentación eliminada!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
@@ -109,6 +111,7 @@ namespace ProyectoFinal.Inventory_Module
                             {
                                 loadPresentation();
                                 btnClear_Click(sender, e);
+                                insertLog("El usuario{" + UserCache.Name + "} ha registrado una nueva presentacion de producto {"+txtDescription.Text.Trim()+"}!");
                                 MessageBox.Show(this, "Presentación registrada!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
@@ -151,6 +154,7 @@ namespace ProyectoFinal.Inventory_Module
                             {
                                 loadPresentation();
                                 btnClear_Click(sender, e);
+                                insertLog("El usuario{" + UserCache.Name + "} ha actualizado los datos de la presentacion {"+txtDescription.Text.Trim()+"}");
                                 MessageBox.Show(this, "Presentación actualizada!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
@@ -177,6 +181,20 @@ namespace ProyectoFinal.Inventory_Module
         private void PresentationAdministration_Load(object sender, EventArgs e)
         {
             loadPresentation();
+        }
+
+        public void insertLog(String Messsage)
+        {
+            using (SqlConnection connection = new SqlConnection(strConexion))
+            {
+                using (SqlCommand cmd = new SqlCommand("SP_InsertLog", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@UserID", UserCache.UserID);
+                    cmd.Parameters.AddWithValue("@message", Messsage);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }
