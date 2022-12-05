@@ -7,6 +7,8 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Reflection;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +19,7 @@ namespace ProyectoFinal.Purchasing_Module
     {
         #region Props
         String strConexion;
+        public List<KeyValuePair<string, int>> TopProductsList { get; private set; }
         #endregion
         public ProductsAnalysis()
         {
@@ -29,6 +32,7 @@ namespace ProyectoFinal.Purchasing_Module
         private void ProductsAnalysis_Load(object sender, EventArgs e)
         {
             loadData();
+            test();
         }
 
         public void loadData()
@@ -52,7 +56,51 @@ namespace ProyectoFinal.Purchasing_Module
                         }
                     }
                 }
+
+                using (SqlCommand cmd2 = new SqlCommand("SP_GetProductsLowStock", connection))
+                {
+                    cmd2.CommandType = CommandType.StoredProcedure;
+                    using (SqlDataAdapter sda2 = new SqlDataAdapter())
+                    {
+                        sda2.SelectCommand = cmd2;
+                        using (DataTable dt2 = new DataTable())
+                        {
+                            sda2.Fill(dt2);
+                            DGV.DataSource = dt2;
+                        }
+                    }
+                }
             }
+        }
+
+        public void test()
+        {
+            TopProductsList = new List<KeyValuePair<string, int>>();
+            using (SqlConnection connection = new SqlConnection(strConexion))
+            {
+                connection.Open();
+                using (var command = new SqlCommand())
+                {
+                    SqlDataReader reader;
+                    command.Connection = connection;
+                    //Get Top 5 products
+                    command.CommandText = @"SELECT TOP 5 P.Name, SUM(SalesDetails.Qty) AS Q FROM SalesDetails
+                                            inner join Products P ON P.ProductId = SalesDetails.ProductId inner join [Orders] O ON O.OrderId = SalesDetails.SaleId
+                                            GROUP BY P.Name
+                                            ORDER BY Q DESC";
+                    reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        TopProductsList.Add(
+                            new KeyValuePair<string, int>(reader[0].ToString(), (int)reader[1]));
+                    }
+                    reader.Close();
+                }
+            }
+            chartTopProducts.DataSource = TopProductsList;
+            chartTopProducts.Series[0].XValueMember = "Key";
+            chartTopProducts.Series[0].YValueMembers = "Value";
+            chartTopProducts.DataBind();
         }
     }
 }

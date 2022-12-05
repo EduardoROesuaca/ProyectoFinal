@@ -46,7 +46,7 @@ namespace ProyectoFinal.Purchasing_Module
             using (SqlConnection connection = new SqlConnection(strConexion))
             {
                 connection.Open();
-                SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM DBO.Products", connection);
+                SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM DBO.Products WHERE Discontinued=0", connection);
                 da.Fill(dtProducts);
                 cmbxProducts.DataSource = dtProducts;
                 cmbxProducts.DisplayMember = "Name";

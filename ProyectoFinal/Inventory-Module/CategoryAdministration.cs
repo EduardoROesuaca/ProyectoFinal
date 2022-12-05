@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoFinal.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -62,6 +63,7 @@ namespace ProyectoFinal.Inventory_Module
                         {
                             loadCategory();
                             btnClear_Click(sender, e);
+                            insertLog("El usuario{" + UserCache.Name + "} ha eliminado la categoria {"+txtDescription.Text.Trim()+"}");
                             MessageBox.Show(this, "Categoría eliminada!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
@@ -102,6 +104,7 @@ namespace ProyectoFinal.Inventory_Module
                             {
                                 loadCategory();
                                 btnClear_Click(sender, e);
+                                insertLog("El usuario{" + UserCache.Name + "} ha registrado una nueva categoria!");
                                 MessageBox.Show(this, "Categoría registrada!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
@@ -144,6 +147,7 @@ namespace ProyectoFinal.Inventory_Module
                             {
                                 loadCategory();
                                 btnClear_Click(sender, e);
+                                insertLog("El usuario{" + UserCache.Name + "} ha actualizado la categoria {"+txtDescription.Text.Trim()+"}");
                                 MessageBox.Show(this, "Categoría actualizada!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
@@ -176,6 +180,21 @@ namespace ProyectoFinal.Inventory_Module
         {
             txtId.Text = DGV.Rows[DGV.CurrentRow.Index].Cells[0].Value.ToString();
             txtDescription.Text = DGV.Rows[DGV.CurrentRow.Index].Cells[1].Value.ToString();
+        }
+
+        public void insertLog(String Messsage)
+        {
+            using (SqlConnection connection = new SqlConnection(strConexion))
+            {
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand("SP_InsertLog", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@UserID", UserCache.UserID);
+                    cmd.Parameters.AddWithValue("@message", Messsage);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

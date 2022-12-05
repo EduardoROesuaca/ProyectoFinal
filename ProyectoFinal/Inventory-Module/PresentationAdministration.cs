@@ -187,6 +187,7 @@ namespace ProyectoFinal.Inventory_Module
         {
             using (SqlConnection connection = new SqlConnection(strConexion))
             {
+                connection.Open();
                 using (SqlCommand cmd = new SqlCommand("SP_InsertLog", connection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
