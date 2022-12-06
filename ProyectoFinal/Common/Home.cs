@@ -24,7 +24,7 @@ namespace ProyectoFinal.Common
 
         #region MDIChilds
         ExportLogs ExportLogsForm;
-        SalesReports SalesReportForm;
+        AdministrationModule AdministrationForm;
         InvoicingModule InvoicingForm;
         PurchasingModule PurchasingForm;
         InventoryModule InventoryForm;
@@ -165,16 +165,16 @@ namespace ProyectoFinal.Common
 
         private void btnSysAdmin_Click(object sender, EventArgs e)
         {
-            if (this.SalesReportForm != null)
+            if (this.AdministrationForm != null)
             {
-                this.SalesReportForm.BringToFront();
+                this.AdministrationForm.BringToFront();
             }
             else
             {
-                this.SalesReportForm = new SalesReports();
-                this.SalesReportForm.TopLevel = false;
-                this.plnContainer.Controls.Add(SalesReportForm);
-                this.SalesReportForm.Show();
+                this.AdministrationForm = new AdministrationModule();
+                this.AdministrationForm.TopLevel = false;
+                this.plnContainer.Controls.Add(AdministrationForm);
+                this.AdministrationForm.Show();
             }
         }
 

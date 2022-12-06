@@ -10,16 +10,17 @@ using System.Windows.Forms;
 
 namespace ProyectoFinal.Administration_Module
 {
-    public partial class SalesReports : Form
+    public partial class ReportContainer : Form
     {
-        public SalesReports()
+        public ReportContainer()
         {
             InitializeComponent();
         }
 
-        private void SalesReports_Load(object sender, EventArgs e)
+        private void ReportContainer_Load(object sender, EventArgs e)
         {
 
+            this.reportViewer1.RefreshReport();
         }
     }
 }
