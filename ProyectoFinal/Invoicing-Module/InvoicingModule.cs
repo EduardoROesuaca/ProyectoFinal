@@ -56,7 +56,7 @@ namespace ProyectoFinal
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        public void SelectProduct(int IdProd) 
         {
             try
             {
@@ -77,18 +77,34 @@ namespace ProyectoFinal
                         UserCache.Price = (decimal)tabla.Rows[0]["Price"];
                         UserCache.CantidadProd = (int)tabla.Rows[0]["QtyAvail"];
 
-                        lblVistaPrevia.Text = UserCache.ProductName;
+                        //lblVistaPrevia.Text = UserCache.ProductName;
                     }
                     else
                     {
-                        lblVistaPrevia.Text = "ID no existe en Base de Datos";
+                        //lblVistaPrevia.Text = "ID no existe en Base de Datos";
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Se ha presentado un error: "+ ex);
+                MessageBox.Show("Se ha presentado un error: " + ex);
             }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SelectProduct(UserCache.ProductoID);
+                lblVistaPrevia.Text = UserCache.ProductName;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Se ha presentado un error: " + ex);
+            }
+
+
         }
 
         
@@ -263,6 +279,8 @@ namespace ProyectoFinal
             txtPagoDol.Text = "0";
             txtPagoTC.Text = "0";
             dataFacturacion.Rows.Clear();
+            txtBuscarProdID.Text = "0";
+            lblVistaPrevia.Text = " ";
             txtBuscarProdID.Focus();
             contFila = 0;
         }
@@ -310,6 +328,7 @@ namespace ProyectoFinal
                 DataGridViewRow dgRow = PS.DGVBuscarProd.CurrentRow;
                 txtBuscarProdID.Text = dgRow.Cells[0].Value.ToString();
                 lblVistaPrevia.Text = dgRow.Cells[5].Value.ToString();
+                SelectProduct(int.Parse(txtBuscarProdID.Text));
                 txtCantidadProd.Focus();
             }
         }

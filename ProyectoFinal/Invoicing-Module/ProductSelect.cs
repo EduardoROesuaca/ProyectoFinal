@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataSet = System.Data.DataSet;
 
 namespace ProyectoFinal.Invoicing_Module
 {
@@ -72,6 +73,28 @@ namespace ProyectoFinal.Invoicing_Module
         private void btnRegresar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void DGVBuscarProd_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(strConexion);
+                DataSet dsProd = new DataSet();
+                string query = "Select * from Products Where Name Like('%" + txtBuscarProd.Text.Trim() +"%')";
+                SqlDataAdapter dataProduct = new SqlDataAdapter(query, connection);
+                dataProduct.Fill(dsProd);
+                DGVBuscarProd.DataSource = dsProd.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un error " + ex);
+            }
         }
     }
 }
