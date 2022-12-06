@@ -69,7 +69,8 @@ namespace ProyectoFinal.Administration_Module
                     SqlDataAdapter sda = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     sda.Fill(dt);
-                    rc.reportViewer1.LocalReport.ReportPath = "rptLogs.rdlc";
+                    string userName = Environment.UserName;
+                    rc.reportViewer1.LocalReport.ReportPath = "C:\\Users\\"+userName+"\\source\\repos\\ProyectoFinal\\ProyectoFinal\\Administration-Module\\rptLogs.rdlc";
                     rc.reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", dt));
 
                     rc.reportViewer1.RefreshReport();
