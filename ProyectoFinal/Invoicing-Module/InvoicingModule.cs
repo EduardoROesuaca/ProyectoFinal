@@ -15,10 +15,7 @@ namespace ProyectoFinal
         String strConexion;
         public static int contFila = 0;
         public static double total = 0;
-        public static double pagoCol = 0;
-        public static double pagoDol = 0;
-        public static double pagoTC = 0;
-        public static double vuelto = 0;
+
 
         public InvoicingModule()
         {
@@ -46,10 +43,7 @@ namespace ProyectoFinal
 
         private void InvoicingModule_Load(object sender, EventArgs e)
         {
-            txtPagoCol.Text = "0";
-            txtPagoDol.Text = "0";
-            txtPagoTC.Text = "0";   
-            txtVuelto.Text = "0";
+
         }
         private void PBMin_Click(object sender, EventArgs e)
         {
@@ -137,9 +131,7 @@ namespace ProyectoFinal
                                 subtotal += iva;
                                 dataFacturacion.Rows[contFila].Cells[5].Value = iva;
                                 dataFacturacion.Rows[contFila].Cells[6].Value = subtotal;
-                                txtBuscarProdID.Text = "";
-                                txtCantidadProd.Text = "";
-                                lblVistaPrevia.Text = "";
+                                Limpiar();
                                 contFila++;
                             }
                             if (UserCache.CategoriaID.ToString() == "2" || UserCache.CategoriaID.ToString() == "3")
@@ -149,9 +141,7 @@ namespace ProyectoFinal
                                 subtotal += iva;
                                 dataFacturacion.Rows[contFila].Cells[5].Value = iva;
                                 dataFacturacion.Rows[contFila].Cells[6].Value = subtotal;
-                                txtBuscarProdID.Text = "";
-                                txtCantidadProd.Text = "";
-                                lblVistaPrevia.Text = "";
+                                Limpiar();
                                 contFila++;
 
                             }
@@ -180,9 +170,7 @@ namespace ProyectoFinal
                                     subtotal += iva;
                                     dataFacturacion.Rows[numFila].Cells[5].Value = iva;
                                     dataFacturacion.Rows[numFila].Cells[6].Value = subtotal;
-                                    txtBuscarProdID.Text = "";
-                                    txtCantidadProd.Text = "";
-                                    lblVistaPrevia.Text = "";
+                                    Limpiar();
                                 }
 
                                 if (UserCache.CategoriaID.ToString() == "2" || UserCache.CategoriaID.ToString() == "3")
@@ -192,9 +180,7 @@ namespace ProyectoFinal
                                     subtotal += iva;
                                     dataFacturacion.Rows[numFila].Cells[5].Value = iva;
                                     dataFacturacion.Rows[numFila].Cells[6].Value = subtotal;
-                                    txtBuscarProdID.Text = "";
-                                    txtCantidadProd.Text = "";
-                                    lblVistaPrevia.Text = "";
+                                    Limpiar();
                                 }
                             }
                             else
@@ -208,9 +194,7 @@ namespace ProyectoFinal
                                     subtotal += iva;
                                     dataFacturacion.Rows[contFila].Cells[5].Value = iva;
                                     dataFacturacion.Rows[contFila].Cells[6].Value = subtotal;
-                                    txtBuscarProdID.Text = "";
-                                    txtCantidadProd.Text = "";
-                                    lblVistaPrevia.Text = "";
+                                    Limpiar();
                                     contFila++;
                                 }
                                 if (UserCache.CategoriaID.ToString() == "2" || UserCache.CategoriaID.ToString() == "3")
@@ -220,9 +204,7 @@ namespace ProyectoFinal
                                     subtotal += iva;
                                     dataFacturacion.Rows[contFila].Cells[5].Value = iva;
                                     dataFacturacion.Rows[contFila].Cells[6].Value = subtotal;
-                                    txtBuscarProdID.Text = "";
-                                    txtCantidadProd.Text = "";
-                                    lblVistaPrevia.Text = "";
+                                    Limpiar();
                                     contFila++;
 
                                 }
@@ -235,7 +217,6 @@ namespace ProyectoFinal
                         }
                         txtTotalColones.Text = total.ToString();
                         txtTotalDolares.Text = (total / 620).ToString("0.##");
-                        Cambio();
                     }
                     else
                     {
@@ -262,7 +243,6 @@ namespace ProyectoFinal
                 txtTotalDolares.Text = (total / 620).ToString("0.##");
                 dataFacturacion.Rows.RemoveAt(dataFacturacion.CurrentRow.Index);
                 contFila--;
-                Cambio();
             }
         }
 
@@ -274,10 +254,6 @@ namespace ProyectoFinal
         public void Nuevo() {
             txtTotalColones.Text = "0";
             txtTotalDolares.Text = "0";
-            txtVuelto.Text = "0";
-            txtPagoCol.Text = "0";
-            txtPagoDol.Text = "0";
-            txtPagoTC.Text = "0";
             dataFacturacion.Rows.Clear();
             txtBuscarProdID.Text = "0";
             lblVistaPrevia.Text = " ";
@@ -285,38 +261,40 @@ namespace ProyectoFinal
             contFila = 0;
         }
 
-        public void Cambio() { 
-            pagoCol = Double.Parse(txtPagoCol.Text);    
-            pagoDol = Double.Parse(txtPagoDol.Text);
-            pagoTC = Double.Parse(txtPagoTC.Text);
-            vuelto = (pagoCol+pagoTC+(pagoDol*610)) - total;
-            txtVuelto.Text = vuelto.ToString();
-        
+        public void Limpiar()
+        {
+            txtBuscarProdID.Text = "";
+            txtCantidadProd.Text = "";
+            lblVistaPrevia.Text = "";
+            txtBuscarProdID.Focus();
         }
+
+        //public void Cambio() { 
+        //    pagoCol = Double.Parse(txtPagoCol.Text);    
+        //    pagoDol = Double.Parse(txtPagoDol.Text);
+        //    pagoTC = Double.Parse(txtPagoTC.Text);
+        //    vuelto = (pagoCol+pagoTC+(pagoDol*610)) - total;
+        //    txtVuelto.Text = vuelto.ToString();
+
+        //}
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (vuelto >= 0)
+            foreach (DataGridViewRow Fila in dataFacturacion.Rows)
             {
-                foreach (DataGridViewRow Fila in dataFacturacion.Rows)
-                {
-                    if (Fila.Cells[2].Value.ToString() == "2")
+                if (Fila.Cells[2].Value.ToString() == "2")
                     {
-                        PassVal PassAdm = new PassVal();
-                        PassAdm.ShowDialog();
-                        Nuevo();
+                    PassVal PassAdm = new PassVal();
+                    PassAdm.ShowDialog();
+                    Nuevo();
                     }
-                }
             }
-            else
-            {
-                MessageBox.Show("La casilla vuelto debe estar en cero");
-            }
+            
         }
 
         private void bntPagar_Click(object sender, EventArgs e)
         {
-            Cambio();
+
         }
 
         private void btnBuscarNombre_Click(object sender, EventArgs e)
