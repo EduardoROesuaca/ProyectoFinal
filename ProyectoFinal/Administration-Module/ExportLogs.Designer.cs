@@ -31,9 +31,9 @@
             this.cmbxUsers = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtInicio = new System.Windows.Forms.DateTimePicker();
             this.btnReport = new System.Windows.Forms.Button();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtFinal = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.chkDate = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
@@ -68,14 +68,14 @@
             this.label1.TabIndex = 33;
             this.label1.Text = "Fecha inicial";
             // 
-            // dateTimePicker1
+            // dtInicio
             // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(504, 263);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(262, 23);
-            this.dateTimePicker1.TabIndex = 34;
+            this.dtInicio.CalendarFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtInicio.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtInicio.Location = new System.Drawing.Point(504, 263);
+            this.dtInicio.Name = "dtInicio";
+            this.dtInicio.Size = new System.Drawing.Size(262, 23);
+            this.dtInicio.TabIndex = 34;
             // 
             // btnReport
             // 
@@ -88,14 +88,14 @@
             this.btnReport.UseVisualStyleBackColor = true;
             this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
-            // dateTimePicker2
+            // dtFinal
             // 
-            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(504, 306);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(262, 23);
-            this.dateTimePicker2.TabIndex = 37;
+            this.dtFinal.CalendarFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtFinal.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtFinal.Location = new System.Drawing.Point(504, 306);
+            this.dtFinal.Name = "dtFinal";
+            this.dtFinal.Size = new System.Drawing.Size(262, 23);
+            this.dtFinal.TabIndex = 37;
             // 
             // label2
             // 
@@ -126,10 +126,10 @@
             this.ClientSize = new System.Drawing.Size(1177, 684);
             this.ControlBox = false;
             this.Controls.Add(this.chkDate);
-            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.dtFinal);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnReport);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtInicio);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbxUsers);
             this.Controls.Add(this.label6);
@@ -149,9 +149,9 @@
         private System.Windows.Forms.ComboBox cmbxUsers;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtInicio;
         private System.Windows.Forms.Button btnReport;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtFinal;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox chkDate;
     }
