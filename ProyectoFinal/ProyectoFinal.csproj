@@ -165,6 +165,18 @@
     <Compile Include="Invoicing-Module\ProductSelect.Designer.cs">
       <DependentUpon>ProductSelect.cs</DependentUpon>
     </Compile>
+    <Compile Include="Payment-Module\PaymentModule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Payment-Module\PaymentModule.Designer.cs">
+      <DependentUpon>PaymentModule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Payment-Module\SelectInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Payment-Module\SelectInvoice.Designer.cs">
+      <DependentUpon>SelectInvoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Purchasing-Module\NewPurchase.cs">
@@ -241,6 +253,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Invoicing-Module\ProductSelect.resx">
       <DependentUpon>ProductSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payment-Module\PaymentModule.resx">
+      <DependentUpon>PaymentModule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payment-Module\SelectInvoice.resx">
+      <DependentUpon>SelectInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -42,6 +42,7 @@
             this.PBMin = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnCajas = new System.Windows.Forms.Button();
             this.plnMenu.SuspendLayout();
             this.plnHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PBMin)).BeginInit();
@@ -52,6 +53,7 @@
             // plnMenu
             // 
             this.plnMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.plnMenu.Controls.Add(this.btnCajas);
             this.plnMenu.Controls.Add(this.btnReports);
             this.plnMenu.Controls.Add(this.btnSysAdmin);
             this.plnMenu.Controls.Add(this.btnInventoryModule);
@@ -72,7 +74,7 @@
             // btnReports
             // 
             this.btnReports.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReports.Location = new System.Drawing.Point(12, 444);
+            this.btnReports.Location = new System.Drawing.Point(12, 493);
             this.btnReports.Name = "btnReports";
             this.btnReports.Size = new System.Drawing.Size(240, 35);
             this.btnReports.TabIndex = 8;
@@ -83,7 +85,7 @@
             // btnSysAdmin
             // 
             this.btnSysAdmin.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSysAdmin.Location = new System.Drawing.Point(12, 383);
+            this.btnSysAdmin.Location = new System.Drawing.Point(12, 432);
             this.btnSysAdmin.Name = "btnSysAdmin";
             this.btnSysAdmin.Size = new System.Drawing.Size(240, 35);
             this.btnSysAdmin.TabIndex = 7;
@@ -94,7 +96,7 @@
             // btnInventoryModule
             // 
             this.btnInventoryModule.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInventoryModule.Location = new System.Drawing.Point(12, 325);
+            this.btnInventoryModule.Location = new System.Drawing.Point(12, 374);
             this.btnInventoryModule.Name = "btnInventoryModule";
             this.btnInventoryModule.Size = new System.Drawing.Size(240, 35);
             this.btnInventoryModule.TabIndex = 6;
@@ -105,7 +107,7 @@
             // btnPurchasingModule
             // 
             this.btnPurchasingModule.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPurchasingModule.Location = new System.Drawing.Point(12, 270);
+            this.btnPurchasingModule.Location = new System.Drawing.Point(12, 319);
             this.btnPurchasingModule.Name = "btnPurchasingModule";
             this.btnPurchasingModule.Size = new System.Drawing.Size(240, 35);
             this.btnPurchasingModule.TabIndex = 5;
@@ -116,7 +118,7 @@
             // btnInvoicingModule
             // 
             this.btnInvoicingModule.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInvoicingModule.Location = new System.Drawing.Point(12, 212);
+            this.btnInvoicingModule.Location = new System.Drawing.Point(12, 202);
             this.btnInvoicingModule.Name = "btnInvoicingModule";
             this.btnInvoicingModule.Size = new System.Drawing.Size(240, 35);
             this.btnInvoicingModule.TabIndex = 2;
@@ -215,6 +217,17 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
+            // btnCajas
+            // 
+            this.btnCajas.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCajas.Location = new System.Drawing.Point(12, 259);
+            this.btnCajas.Name = "btnCajas";
+            this.btnCajas.Size = new System.Drawing.Size(240, 35);
+            this.btnCajas.TabIndex = 9;
+            this.btnCajas.Text = "Modulo de Cajas";
+            this.btnCajas.UseVisualStyleBackColor = true;
+            this.btnCajas.Click += new System.EventHandler(this.btnCajas_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -255,5 +268,6 @@
         private System.Windows.Forms.Button btnPurchasingModule;
         private System.Windows.Forms.Button btnInvoicingModule;
         private System.Windows.Forms.Panel plnContainer;
+        private System.Windows.Forms.Button btnCajas;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualBasic.Devices;
 using ProyectoFinal.Administration_Module;
 using ProyectoFinal.Inventory_Module;
+using ProyectoFinal.Payment_Module;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,6 +29,7 @@ namespace ProyectoFinal.Common
         InvoicingModule InvoicingForm;
         PurchasingModule PurchasingForm;
         InventoryModule InventoryForm;
+        PaymentModule PaymentForm;
 
         #endregion
         public Home()
@@ -216,6 +218,21 @@ namespace ProyectoFinal.Common
         private void plnMenu_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnCajas_Click(object sender, EventArgs e)
+        {
+            if (this.PaymentForm != null)
+            {
+                this.PaymentForm.BringToFront();
+            }
+            else
+            {
+                this.PaymentForm = new PaymentModule();
+                this.PaymentForm.TopLevel = false;
+                this.plnContainer.Controls.Add(PaymentForm);
+                this.PaymentForm.Show();
+            }
         }
 
         private void plnHeader_MouseUp(object sender, MouseEventArgs e)
