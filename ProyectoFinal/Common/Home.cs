@@ -2,6 +2,7 @@
 using ProyectoFinal.Administration_Module;
 using ProyectoFinal.Inventory_Module;
 using ProyectoFinal.Payment_Module;
+using ProyectoFinal.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,13 +25,12 @@ namespace ProyectoFinal.Common
         #endregion
 
         #region MDIChilds
-        ExportLogs ExportLogsForm;
         AdministrationModule AdministrationForm;
         InvoicingModule InvoicingForm;
         PurchasingModule PurchasingForm;
         InventoryModule InventoryForm;
         PaymentModule PaymentForm;
-
+        ReportsView ReportsViewForm;
         #endregion
         public Home()
         {
@@ -140,15 +140,15 @@ namespace ProyectoFinal.Common
 
         private void btnReports_Click(object sender, EventArgs e)
         {
-            if (this.ExportLogsForm != null)
+            if (this.ReportsViewForm != null)
             {
-                this.ExportLogsForm.BringToFront();
+                this.ReportsViewForm.BringToFront();
             }
             else{
-                this.ExportLogsForm = new ExportLogs();
-                this.ExportLogsForm.TopLevel = false;
-                this.plnContainer.Controls.Add(ExportLogsForm);
-                this.ExportLogsForm.Show();
+                this.ReportsViewForm = new ReportsView();
+                this.ReportsViewForm.TopLevel = false;
+                this.plnContainer.Controls.Add(ReportsViewForm);
+                this.ReportsViewForm.Show();
             }
         }
 
