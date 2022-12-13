@@ -16,8 +16,16 @@ namespace ProyectoFinal.Payment_Module
     public partial class PaymentModule : Form
     {
         String strConexion;
+        String MetPago;
         int Codigo;
         double total = 0;
+        double vuelto = 0;
+        double pagoCol = 0;
+        double pagoDol = 0;
+        double tipoCambio = 620;
+        double subTotal = 0;
+        double impuestos = 0;
+        double pagoTarjeta = 0;
 
         public PaymentModule()
         {
@@ -91,12 +99,14 @@ namespace ProyectoFinal.Payment_Module
                         }
                         else
                         {
-                            MessageBox.Show(this, "Transaccion errone", "Atención!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show(this, "Transaccion erronea", "Atención!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
 
                         foreach (DataGridViewRow Fila in dataFacturacion.Rows)
                         {
                             total += Convert.ToDouble(Fila.Cells[6].Value);
+                            impuestos += Convert.ToDouble(Fila.Cells[5].Value);
+                            subTotal = total - impuestos;
                         }
                         txtTotalColones.Text = total.ToString();
                         txtTotalDolares.Text = (total / 620).ToString("0.##");
@@ -111,12 +121,185 @@ namespace ProyectoFinal.Payment_Module
 
         private void btnPagar_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow Fila in dataFacturacion.Rows)
+            if (Cambio())
             {
-                if (Fila.Cells[2].Value.ToString() == "3")
+                foreach (DataGridViewRow Fila in dataFacturacion.Rows)
                 {
-                    PassVal PassAdm = new PassVal();
-                    PassAdm.ShowDialog();
+                    if (Fila.Cells[2].Value.ToString() == "3")
+                    {
+                        PassVal PassAdm = new PassVal();
+                        PassAdm.ShowDialog();
+                    }
+                }
+            }
+
+        }
+
+        public void Limpiar() 
+        {
+            txtCodigo.Text = "";
+            txtNombreCliente.Text = "";
+            txtColones.Text = "0";
+            txtDolares.Text = "0";
+            txtTarjeta.Text = "0";
+            txtVuelto.Text = "0";
+            txtTotalColones.Text = "0";
+            txtTotalDolares.Text = "0";
+            dataFacturacion.Rows.Clear();
+        }
+        public bool Cambio()
+        {
+            try
+            {
+                pagoCol = Double.Parse(txtColones.Text);
+                pagoDol = Double.Parse(txtDolares.Text);
+                pagoTarjeta = Double.Parse(txtTarjeta.Text);
+                vuelto = (pagoCol + pagoTarjeta + (pagoDol * tipoCambio)) - total;
+                txtVuelto.Text = vuelto.ToString();
+                if (vuelto>0)
+                {
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show(this, "Falta dinero por pagar ", "Atención!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(this, "Transaccion erronea: "+ex, "Atención!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
+
+        }
+
+        private void cmbxMetPago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbxMetPago.SelectedIndex == 0)
+                {
+                    txtColones.Enabled = true;
+                }
+                if (cmbxMetPago.SelectedIndex == 1)
+                {
+                    txtDolares.Enabled = true;
+                }
+                if (cmbxMetPago.SelectedIndex == 2)
+                {
+                    txtTarjeta.Enabled = true;
+                }
+                else
+                {
+                    txtColones.Enabled = true;
+                    txtDolares.Enabled = true;
+                    txtTarjeta.Enabled = true;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+
+        private void btnFinCompra_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(this.dataFacturacion, "Desea confirmar la transacción?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
+            {
+                if (dataFacturacion.Rows.Count == 0 || string.IsNullOrEmpty(txtNombreCliente.Text))
+                {
+                    MessageBox.Show(this, "Debe seleccionar una factura!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    using (SqlConnection connection = new SqlConnection(strConexion))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("SP_InsertNewSale", connection))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@UserID", UserCache.UserID);
+                            cmd.Parameters.AddWithValue("@PayMet", cmbxMetPago.SelectedIndex.ToString());
+                            cmd.Parameters.AddWithValue("@DolarEx", tipoCambio);
+                            cmd.Parameters.AddWithValue("@Dolars", pagoDol);
+                            cmd.Parameters.AddWithValue("@Colons", pagoCol);
+                            cmd.Parameters.AddWithValue("@Card", pagoTarjeta);
+                            cmd.Parameters.AddWithValue("@SubTotal", subTotal);
+                            cmd.Parameters.AddWithValue("@Taxes", impuestos);
+                            cmd.Parameters.AddWithValue("@Total", total);
+                            connection.Open();
+                            using (SqlDataAdapter sda = new SqlDataAdapter())
+                            {
+                                sda.SelectCommand = cmd;
+                                using (DataTable dt = new DataTable())
+                                {
+                                    sda.Fill(dt);
+                                    if (insertData(int.Parse(dt.Rows[0][0].ToString())))
+                                    {
+                                        MessageBox.Show(this, "Datos de ventas registrados exitosamente!", "Excelente!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        dataFacturacion.Rows.Clear();
+                                        Limpiar();
+                                        insertLog("El usuario {" + UserCache.Name + "} ha registrado una nueva orden!");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(this, "Error al registrar los datos, intentelo nuevamente!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public bool insertData(int SaleID)
+        {
+            int x = 1;
+            bool flag = true;
+            foreach (DataGridViewRow row in dataFacturacion.Rows)
+            {
+                using (SqlConnection connection = new SqlConnection(strConexion))
+                {
+                    using (SqlCommand cmd = new SqlCommand("SP_InsertNewSaleDetail", connection))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@SaleID", SaleID);
+                        cmd.Parameters.AddWithValue("@ProductID", row.Cells[0].Value);
+                        cmd.Parameters.AddWithValue("@Taxes", x);
+                        cmd.Parameters.AddWithValue("@Qty", row.Cells[3].Value);
+                        connection.Open();
+                        int rows = cmd.ExecuteNonQuery();
+                        if (rows != 2)
+                        {
+                            flag = false;
+                            break;
+                        }
+                    }
+                }
+            }
+            return flag;
+        }
+
+        public void insertLog(String Messsage)
+        {
+            using (SqlConnection connection = new SqlConnection(strConexion))
+            {
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand("SP_InsertLog", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@UserID", UserCache.UserID);
+                    cmd.Parameters.AddWithValue("@message", Messsage);
+                    cmd.ExecuteNonQuery();
                 }
             }
         }

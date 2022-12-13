@@ -270,14 +270,6 @@ namespace ProyectoFinal
             txtBuscarProdID.Focus();
         }
 
-        //public void Cambio() { 
-        //    pagoCol = Double.Parse(txtPagoCol.Text);    
-        //    pagoDol = Double.Parse(txtPagoDol.Text);
-        //    pagoTC = Double.Parse(txtPagoTC.Text);
-        //    vuelto = (pagoCol+pagoTC+(pagoDol*610)) - total;
-        //    txtVuelto.Text = vuelto.ToString();
-
-        //}
 
         private void button2_Click(object sender, EventArgs e)
         {
