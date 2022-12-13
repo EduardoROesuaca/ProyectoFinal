@@ -32,34 +32,34 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtFlujoCajaCol = new System.Windows.Forms.TextBox();
-            this.txtCierreCajaCol = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cmbxFechas = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtCierreCajaDol = new System.Windows.Forms.TextBox();
-            this.txtFlujoCajaDol = new System.Windows.Forms.TextBox();
-            this.txtVentaAntCol = new System.Windows.Forms.TextBox();
-            this.txtVentaAntDol = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.txtFlujoCajaCard = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtFlujoCajaDol = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtFlujoCajaCol = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.txtVentaAntCard = new System.Windows.Forms.TextBox();
+            this.txtVentaAntDol = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.txtVentaAntCol = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.txtCierreCajaCard = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.txtCierreCajaDol = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtCierreCajaCol = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -114,117 +114,45 @@
             this.panel1.Size = new System.Drawing.Size(329, 527);
             this.panel1.TabIndex = 3;
             // 
-            // panel2
+            // txtFlujoCajaCard
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.txtVentaAntCard);
-            this.panel2.Controls.Add(this.txtVentaAntDol);
-            this.panel2.Controls.Add(this.label15);
-            this.panel2.Controls.Add(this.txtVentaAntCol);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.cmbxFechas);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Location = new System.Drawing.Point(416, 78);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(329, 527);
-            this.panel2.TabIndex = 4;
+            this.txtFlujoCajaCard.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFlujoCajaCard.Location = new System.Drawing.Point(145, 267);
+            this.txtFlujoCajaCard.Name = "txtFlujoCajaCard";
+            this.txtFlujoCajaCard.ReadOnly = true;
+            this.txtFlujoCajaCard.Size = new System.Drawing.Size(130, 27);
+            this.txtFlujoCajaCard.TabIndex = 28;
             // 
-            // panel3
+            // label14
             // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.txtCierreCajaCard);
-            this.panel3.Controls.Add(this.label13);
-            this.panel3.Controls.Add(this.label16);
-            this.panel3.Controls.Add(this.txtCierreCajaDol);
-            this.panel3.Controls.Add(this.label10);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.label11);
-            this.panel3.Controls.Add(this.txtCierreCajaCol);
-            this.panel3.Controls.Add(this.button1);
-            this.panel3.Location = new System.Drawing.Point(790, 78);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(329, 527);
-            this.panel3.TabIndex = 4;
+            this.label14.BackColor = System.Drawing.Color.White;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label14.Location = new System.Drawing.Point(19, 267);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(120, 27);
+            this.label14.TabIndex = 27;
+            this.label14.Text = "Boucher";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label1
+            // label12
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(82, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 21);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Flujo de Caja";
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(113, 102);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(68, 21);
+            this.label12.TabIndex = 26;
+            this.label12.Text = "Montos";
             // 
-            // label2
+            // txtFlujoCajaDol
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(91, 29);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(126, 21);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Venta Anterior";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(100, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(123, 21);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Cierre de Caja";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(468, 22);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(215, 25);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Modulo de Informes";
-            // 
-            // txtFlujoCajaCol
-            // 
-            this.txtFlujoCajaCol.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFlujoCajaCol.Location = new System.Drawing.Point(145, 189);
-            this.txtFlujoCajaCol.Name = "txtFlujoCajaCol";
-            this.txtFlujoCajaCol.ReadOnly = true;
-            this.txtFlujoCajaCol.Size = new System.Drawing.Size(130, 27);
-            this.txtFlujoCajaCol.TabIndex = 5;
-            // 
-            // txtCierreCajaCol
-            // 
-            this.txtCierreCajaCol.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCierreCajaCol.Location = new System.Drawing.Point(161, 188);
-            this.txtCierreCajaCol.Name = "txtCierreCajaCol";
-            this.txtCierreCajaCol.ReadOnly = true;
-            this.txtCierreCajaCol.Size = new System.Drawing.Size(130, 27);
-            this.txtCierreCajaCol.TabIndex = 6;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(85, 102);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(140, 21);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Seleccione el día";
-            // 
-            // cmbxFechas
-            // 
-            this.cmbxFechas.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbxFechas.FormattingEnabled = true;
-            this.cmbxFechas.Location = new System.Drawing.Point(55, 137);
-            this.cmbxFechas.Name = "cmbxFechas";
-            this.cmbxFechas.Size = new System.Drawing.Size(198, 29);
-            this.cmbxFechas.TabIndex = 9;
+            this.txtFlujoCajaDol.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFlujoCajaDol.Location = new System.Drawing.Point(145, 228);
+            this.txtFlujoCajaDol.Name = "txtFlujoCajaDol";
+            this.txtFlujoCajaDol.ReadOnly = true;
+            this.txtFlujoCajaDol.Size = new System.Drawing.Size(130, 27);
+            this.txtFlujoCajaDol.TabIndex = 23;
             // 
             // label6
             // 
@@ -250,6 +178,82 @@
             this.label7.Text = "₡";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(82, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(111, 21);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Flujo de Caja";
+            // 
+            // txtFlujoCajaCol
+            // 
+            this.txtFlujoCajaCol.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFlujoCajaCol.Location = new System.Drawing.Point(145, 189);
+            this.txtFlujoCajaCol.Name = "txtFlujoCajaCol";
+            this.txtFlujoCajaCol.ReadOnly = true;
+            this.txtFlujoCajaCol.Size = new System.Drawing.Size(130, 27);
+            this.txtFlujoCajaCol.TabIndex = 5;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.dateTimePicker1);
+            this.panel2.Controls.Add(this.txtVentaAntCard);
+            this.panel2.Controls.Add(this.txtVentaAntDol);
+            this.panel2.Controls.Add(this.label15);
+            this.panel2.Controls.Add(this.txtVentaAntCol);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.button3);
+            this.panel2.Location = new System.Drawing.Point(416, 78);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(329, 527);
+            this.panel2.TabIndex = 4;
+            // 
+            // txtVentaAntCard
+            // 
+            this.txtVentaAntCard.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVentaAntCard.Location = new System.Drawing.Point(159, 267);
+            this.txtVentaAntCard.Name = "txtVentaAntCard";
+            this.txtVentaAntCard.ReadOnly = true;
+            this.txtVentaAntCard.Size = new System.Drawing.Size(130, 27);
+            this.txtVentaAntCard.TabIndex = 30;
+            // 
+            // txtVentaAntDol
+            // 
+            this.txtVentaAntDol.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVentaAntDol.Location = new System.Drawing.Point(159, 228);
+            this.txtVentaAntDol.Name = "txtVentaAntDol";
+            this.txtVentaAntDol.ReadOnly = true;
+            this.txtVentaAntDol.Size = new System.Drawing.Size(130, 27);
+            this.txtVentaAntDol.TabIndex = 25;
+            // 
+            // label15
+            // 
+            this.label15.BackColor = System.Drawing.Color.White;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label15.Location = new System.Drawing.Point(33, 267);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(120, 27);
+            this.label15.TabIndex = 29;
+            this.label15.Text = "Boucher";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // txtVentaAntCol
+            // 
+            this.txtVentaAntCol.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVentaAntCol.Location = new System.Drawing.Point(159, 188);
+            this.txtVentaAntCol.Name = "txtVentaAntCol";
+            this.txtVentaAntCol.ReadOnly = true;
+            this.txtVentaAntCol.Size = new System.Drawing.Size(130, 27);
+            this.txtVentaAntCol.TabIndex = 24;
+            // 
             // label8
             // 
             this.label8.BackColor = System.Drawing.Color.White;
@@ -274,6 +278,83 @@
             this.label9.Text = "₡";
             this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(85, 102);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(140, 21);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Seleccione el día";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(91, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(126, 21);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Venta Anterior";
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.txtCierreCajaCard);
+            this.panel3.Controls.Add(this.label13);
+            this.panel3.Controls.Add(this.label16);
+            this.panel3.Controls.Add(this.txtCierreCajaDol);
+            this.panel3.Controls.Add(this.label10);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.label11);
+            this.panel3.Controls.Add(this.txtCierreCajaCol);
+            this.panel3.Controls.Add(this.button1);
+            this.panel3.Location = new System.Drawing.Point(790, 78);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(329, 527);
+            this.panel3.TabIndex = 4;
+            // 
+            // txtCierreCajaCard
+            // 
+            this.txtCierreCajaCard.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCierreCajaCard.Location = new System.Drawing.Point(161, 267);
+            this.txtCierreCajaCard.Name = "txtCierreCajaCard";
+            this.txtCierreCajaCard.ReadOnly = true;
+            this.txtCierreCajaCard.Size = new System.Drawing.Size(130, 27);
+            this.txtCierreCajaCard.TabIndex = 32;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(132, 102);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(68, 21);
+            this.label13.TabIndex = 27;
+            this.label13.Text = "Montos";
+            // 
+            // label16
+            // 
+            this.label16.BackColor = System.Drawing.Color.White;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label16.Location = new System.Drawing.Point(35, 267);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(120, 27);
+            this.label16.TabIndex = 31;
+            this.label16.Text = "Boucher";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // txtCierreCajaDol
+            // 
+            this.txtCierreCajaDol.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCierreCajaDol.Location = new System.Drawing.Point(161, 228);
+            this.txtCierreCajaDol.Name = "txtCierreCajaDol";
+            this.txtCierreCajaDol.ReadOnly = true;
+            this.txtCierreCajaDol.Size = new System.Drawing.Size(130, 27);
+            this.txtCierreCajaDol.TabIndex = 27;
+            // 
             // label10
             // 
             this.label10.BackColor = System.Drawing.Color.White;
@@ -285,6 +366,16 @@
             this.label10.TabIndex = 26;
             this.label10.Text = "$";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(100, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(123, 21);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Cierre de Caja";
             // 
             // label11
             // 
@@ -298,124 +389,31 @@
             this.label11.Text = "₡";
             this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // txtCierreCajaDol
+            // txtCierreCajaCol
             // 
-            this.txtCierreCajaDol.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCierreCajaDol.Location = new System.Drawing.Point(161, 228);
-            this.txtCierreCajaDol.Name = "txtCierreCajaDol";
-            this.txtCierreCajaDol.ReadOnly = true;
-            this.txtCierreCajaDol.Size = new System.Drawing.Size(130, 27);
-            this.txtCierreCajaDol.TabIndex = 27;
+            this.txtCierreCajaCol.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCierreCajaCol.Location = new System.Drawing.Point(161, 188);
+            this.txtCierreCajaCol.Name = "txtCierreCajaCol";
+            this.txtCierreCajaCol.ReadOnly = true;
+            this.txtCierreCajaCol.Size = new System.Drawing.Size(130, 27);
+            this.txtCierreCajaCol.TabIndex = 6;
             // 
-            // txtFlujoCajaDol
+            // label4
             // 
-            this.txtFlujoCajaDol.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFlujoCajaDol.Location = new System.Drawing.Point(145, 228);
-            this.txtFlujoCajaDol.Name = "txtFlujoCajaDol";
-            this.txtFlujoCajaDol.ReadOnly = true;
-            this.txtFlujoCajaDol.Size = new System.Drawing.Size(130, 27);
-            this.txtFlujoCajaDol.TabIndex = 23;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(468, 22);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(215, 25);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Modulo de Informes";
             // 
-            // txtVentaAntCol
+            // dateTimePicker1
             // 
-            this.txtVentaAntCol.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVentaAntCol.Location = new System.Drawing.Point(159, 188);
-            this.txtVentaAntCol.Name = "txtVentaAntCol";
-            this.txtVentaAntCol.ReadOnly = true;
-            this.txtVentaAntCol.Size = new System.Drawing.Size(130, 27);
-            this.txtVentaAntCol.TabIndex = 24;
-            // 
-            // txtVentaAntDol
-            // 
-            this.txtVentaAntDol.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVentaAntDol.Location = new System.Drawing.Point(159, 228);
-            this.txtVentaAntDol.Name = "txtVentaAntDol";
-            this.txtVentaAntDol.ReadOnly = true;
-            this.txtVentaAntDol.Size = new System.Drawing.Size(130, 27);
-            this.txtVentaAntDol.TabIndex = 25;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(113, 102);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(68, 21);
-            this.label12.TabIndex = 26;
-            this.label12.Text = "Montos";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(132, 102);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(68, 21);
-            this.label13.TabIndex = 27;
-            this.label13.Text = "Montos";
-            // 
-            // txtFlujoCajaCard
-            // 
-            this.txtFlujoCajaCard.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFlujoCajaCard.Location = new System.Drawing.Point(145, 267);
-            this.txtFlujoCajaCard.Name = "txtFlujoCajaCard";
-            this.txtFlujoCajaCard.ReadOnly = true;
-            this.txtFlujoCajaCard.Size = new System.Drawing.Size(130, 27);
-            this.txtFlujoCajaCard.TabIndex = 28;
-            // 
-            // label14
-            // 
-            this.label14.BackColor = System.Drawing.Color.White;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label14.Location = new System.Drawing.Point(19, 267);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(120, 27);
-            this.label14.TabIndex = 27;
-            this.label14.Text = "Boucher";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // txtVentaAntCard
-            // 
-            this.txtVentaAntCard.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVentaAntCard.Location = new System.Drawing.Point(159, 267);
-            this.txtVentaAntCard.Name = "txtVentaAntCard";
-            this.txtVentaAntCard.ReadOnly = true;
-            this.txtVentaAntCard.Size = new System.Drawing.Size(130, 27);
-            this.txtVentaAntCard.TabIndex = 30;
-            // 
-            // label15
-            // 
-            this.label15.BackColor = System.Drawing.Color.White;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label15.Location = new System.Drawing.Point(33, 267);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(120, 27);
-            this.label15.TabIndex = 29;
-            this.label15.Text = "Boucher";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // txtCierreCajaCard
-            // 
-            this.txtCierreCajaCard.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCierreCajaCard.Location = new System.Drawing.Point(161, 267);
-            this.txtCierreCajaCard.Name = "txtCierreCajaCard";
-            this.txtCierreCajaCard.ReadOnly = true;
-            this.txtCierreCajaCard.Size = new System.Drawing.Size(130, 27);
-            this.txtCierreCajaCard.TabIndex = 32;
-            // 
-            // label16
-            // 
-            this.label16.BackColor = System.Drawing.Color.White;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label16.Location = new System.Drawing.Point(35, 267);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(120, 27);
-            this.label16.TabIndex = 31;
-            this.label16.Text = "Boucher";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.dateTimePicker1.Location = new System.Drawing.Point(65, 126);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 31;
             // 
             // ReportsView
             // 
@@ -456,7 +454,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtCierreCajaCol;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cmbxFechas;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtFlujoCajaDol;
@@ -476,5 +473,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtCierreCajaCard;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
