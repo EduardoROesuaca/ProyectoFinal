@@ -110,7 +110,7 @@ namespace ProyectoFinal.Purchasing_Module
         {
             if (txtProductId.Text.Trim().Length < 1)
             {
-                MessageBox.Show(this, "Ingrese el codígo delproducto que desea buscar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Ingrese el codígo del producto que desea buscar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -315,6 +315,7 @@ namespace ProyectoFinal.Purchasing_Module
         {
             using (SqlConnection connection = new SqlConnection(strConexion))
             {
+
                 using (SqlCommand cmd = new SqlCommand("SP_InsertLog", connection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;

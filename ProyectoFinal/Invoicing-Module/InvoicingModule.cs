@@ -13,6 +13,7 @@ namespace ProyectoFinal
     public partial class InvoicingModule : Form
     {
         String strConexion;
+        String NomCliente;
         public static int contFila = 0;
         public static double total = 0;
 
@@ -280,16 +281,93 @@ namespace ProyectoFinal
 
         private void button2_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow Fila in dataFacturacion.Rows)
+            if (MessageBox.Show(this.dataFacturacion, "Desea confirmar el siguiente pedido?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
             {
-                if (Fila.Cells[2].Value.ToString() == "2")
+                if (dataFacturacion.Rows.Count == 0 || string.IsNullOrEmpty(txtNombreCliente.Text))
+                {
+                    MessageBox.Show(this, "Ingrese al menos un producto y un nombre de cliente a la orden e intentelo nuevamente!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    using (SqlConnection connection = new SqlConnection(strConexion))
                     {
-                    PassVal PassAdm = new PassVal();
-                    PassAdm.ShowDialog();
-                    Nuevo();
+                        using (SqlCommand cmd = new SqlCommand("SP_InsertNewPreSale", connection))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@UserID", UserCache.UserID);
+                            cmd.Parameters.AddWithValue("@CustomerName", txtNombreCliente.Text.Trim());
+                            cmd.Parameters.AddWithValue("@Total", double.Parse(txtTotalColones.Text.Trim()));
+                            connection.Open();
+                            using (SqlDataAdapter sda = new SqlDataAdapter())
+                            {
+                                sda.SelectCommand = cmd;
+                                using (DataTable dt = new DataTable())
+                                {
+                                    sda.Fill(dt);
+                                    if (insertProducts(int.Parse(dt.Rows[0][0].ToString())))
+                                    {
+                                        MessageBox.Show(this, "Orden registrada exitosamente!", "Excelente!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        dataFacturacion.Rows.Clear();
+                                        btnNuevo_Click(sender, e);
+                                        insertLog("El usuario {" + UserCache.Name + "} ha registrado una nueva orden!");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(this, "Error al registrar la orden, intentelo nuevamente!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+                            }
+                        }
                     }
+                }
             }
-            
+
+        }
+
+        public bool insertProducts(int OrderID)
+        {
+            bool flag = true;
+            foreach (DataGridViewRow row in dataFacturacion.Rows)
+            {
+                using (SqlConnection connection = new SqlConnection(strConexion))
+                {
+                    using (SqlCommand cmd = new SqlCommand("SP_InsertNewPreSaleDetail", connection))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@PreSaleID", OrderID);
+                        cmd.Parameters.AddWithValue("@ProductID", row.Cells[0].Value);
+                        cmd.Parameters.AddWithValue("@Name", row.Cells[1].Value.ToString());
+                        cmd.Parameters.AddWithValue("@CatID", row.Cells[2].Value);
+                        cmd.Parameters.AddWithValue("@Price", double.Parse(row.Cells[3].Value.ToString()));
+                        cmd.Parameters.AddWithValue("@Qty", row.Cells[4].Value);
+                        cmd.Parameters.AddWithValue("@Taxes", double.Parse(row.Cells[5].Value.ToString()));
+                        cmd.Parameters.AddWithValue("@SubTotal", double.Parse(row.Cells[6].Value.ToString()));
+                        connection.Open();
+                        int rows = cmd.ExecuteNonQuery();
+                        if (rows != 1)
+                        {
+                            flag = false;
+                            break;
+                        }
+                    }
+                }
+            }
+            return flag;
+        }
+
+        public void insertLog(String Messsage)
+        {
+            using (SqlConnection connection = new SqlConnection(strConexion))
+            {
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand("SP_InsertLog", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@UserID", UserCache.UserID);
+                    cmd.Parameters.AddWithValue("@message", Messsage);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         private void bntPagar_Click(object sender, EventArgs e)
@@ -312,6 +390,11 @@ namespace ProyectoFinal
         }
 
         private void dataFacturacion_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtTotalColones_TextChanged(object sender, EventArgs e)
         {
 
         }

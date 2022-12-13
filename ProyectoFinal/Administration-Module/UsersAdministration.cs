@@ -111,9 +111,7 @@ namespace ProyectoFinal.Administration_Module
             txtEmail.ResetText();
             txtTelefono.ResetText();
             cmbxBlock.SelectedIndex = 0;
-            //txtFechaCreacion.ResetText();
             txtIntentosFallidos.ResetText();
-            //txtUltimaActividad.ResetText();
             txtFechaCreacion.Text = DateTime.Now.ToString();
             txtUltimaActividad.Text = DateTime.Now.ToString();
         }

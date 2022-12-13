@@ -153,10 +153,10 @@
     <Compile Include="Invoicing-Module\InvoicingModule.Designer.cs">
       <DependentUpon>InvoicingModule.cs</DependentUpon>
     </Compile>
-    <Compile Include="Invoicing-Module\PassVal.cs">
+    <Compile Include="Payment-Module\PassVal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Invoicing-Module\PassVal.Designer.cs">
+    <Compile Include="Payment-Module\PassVal.Designer.cs">
       <DependentUpon>PassVal.cs</DependentUpon>
     </Compile>
     <Compile Include="Invoicing-Module\ProductSelect.cs">
@@ -248,7 +248,7 @@
     <EmbeddedResource Include="Invoicing-Module\InvoicingModule.resx">
       <DependentUpon>InvoicingModule.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Invoicing-Module\PassVal.resx">
+    <EmbeddedResource Include="Payment-Module\PassVal.resx">
       <DependentUpon>PassVal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Invoicing-Module\ProductSelect.resx">

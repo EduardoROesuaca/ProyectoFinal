@@ -31,7 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.txtBuscarProd = new System.Windows.Forms.TextBox();
+            this.txtBuscarFact = new System.Windows.Forms.TextBox();
             this.btnRegresar = new System.Windows.Forms.Button();
             this.btnSelectFact = new System.Windows.Forms.Button();
             this.DGVBuscarFact = new System.Windows.Forms.DataGridView();
@@ -39,13 +39,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGVBuscarFact)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtBuscarProd
+            // txtBuscarFact
             // 
-            this.txtBuscarProd.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscarProd.Location = new System.Drawing.Point(257, 40);
-            this.txtBuscarProd.Name = "txtBuscarProd";
-            this.txtBuscarProd.Size = new System.Drawing.Size(308, 27);
-            this.txtBuscarProd.TabIndex = 9;
+            this.txtBuscarFact.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscarFact.Location = new System.Drawing.Point(257, 40);
+            this.txtBuscarFact.Name = "txtBuscarFact";
+            this.txtBuscarFact.Size = new System.Drawing.Size(308, 27);
+            this.txtBuscarFact.TabIndex = 9;
             // 
             // btnRegresar
             // 
@@ -56,6 +56,7 @@
             this.btnRegresar.TabIndex = 8;
             this.btnRegresar.Text = "Regresar";
             this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
             // btnSelectFact
             // 
@@ -66,6 +67,7 @@
             this.btnSelectFact.TabIndex = 7;
             this.btnSelectFact.Text = "Seleccionar";
             this.btnSelectFact.UseVisualStyleBackColor = true;
+            this.btnSelectFact.Click += new System.EventHandler(this.btnSelectFact_Click);
             // 
             // DGVBuscarFact
             // 
@@ -116,6 +118,7 @@
             this.btnBuscarFact.TabIndex = 5;
             this.btnBuscarFact.Text = "Buscar";
             this.btnBuscarFact.UseVisualStyleBackColor = true;
+            this.btnBuscarFact.Click += new System.EventHandler(this.btnBuscarFact_Click);
             // 
             // SelectInvoice
             // 
@@ -123,7 +126,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1154, 634);
-            this.Controls.Add(this.txtBuscarProd);
+            this.Controls.Add(this.txtBuscarFact);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.btnSelectFact);
             this.Controls.Add(this.DGVBuscarFact);
@@ -142,7 +145,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtBuscarProd;
+        private System.Windows.Forms.TextBox txtBuscarFact;
         private System.Windows.Forms.Button btnRegresar;
         private System.Windows.Forms.Button btnSelectFact;
         public System.Windows.Forms.DataGridView DGVBuscarFact;
