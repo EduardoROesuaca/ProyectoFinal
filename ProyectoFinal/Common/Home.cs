@@ -67,12 +67,13 @@ namespace ProyectoFinal.Common
             switch (UserCache.RoleID)
             {
                 case 1:
-                    this.InvoicingForm.TopLevel = false;
+                    this.btnInvoicingModule.Visible = false;
                     this.btnPurchasingModule.Visible = false;
                     this.btnInventoryModule.Visible = false;
                     this.btnSysAdmin.Visible = false;
                     break;
                 case 2:
+                    this.btnCajas.Visible = false;
                     this.btnPurchasingModule.Visible = false;
                     this.btnInventoryModule.Visible = false;
                     this.btnSysAdmin.Visible = false;
