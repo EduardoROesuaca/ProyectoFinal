@@ -38,7 +38,7 @@ namespace ProyectoFinal.Reports
 
         private void ReportsView_Load(object sender, EventArgs e)
         {
-            loadDate();
+            //loadDate();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -84,12 +84,46 @@ namespace ProyectoFinal.Reports
                 using (SqlConnection connection = new SqlConnection(strConexion))
                 {
                     connection.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT Date FROM Sales Where UserId ='" + int.Parse(UserCache.UserID.ToString()), connection);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT Date FROM Sales Where UserId ='" + UserCache.UserID, connection);
                     dataAdapter.Fill(dt);
                     cmbxFechas.DataSource = dt;
                     cmbxFechas.DisplayMember = "Date";
                     connection.Close();
                     System.GC.Collect();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(strConexion))
+                {
+                    using (SqlCommand cmd = new SqlCommand("SP_Saldos", connection))
+                    {
+                        connection.Open();
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@UserID", UserCache.UserID);
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
+                        if (dt.Rows.Count > 0)
+                        {
+                            txtCierreCajaCol.Text = dt.Rows[0]["COLONES"].ToString();
+                            txtCierreCajaDol.Text = dt.Rows[0]["DOLARES"].ToString();
+                            txtFlujoCajaCard.Text = dt.Rows[0]["TARJETA"].ToString();
+                        }
+                        else
+                        {
+                            MessageBox.Show(this, "Algo salio mal!", "Atención!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+                    }
                 }
             }
             catch (Exception ex)

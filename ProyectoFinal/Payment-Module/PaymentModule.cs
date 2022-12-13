@@ -165,7 +165,7 @@ namespace ProyectoFinal.Payment_Module
                 pagoTarjeta = Double.Parse(txtTarjeta.Text);
                 vuelto = (pagoCol + pagoTarjeta + (pagoDol * tipoCambio)) - total;
                 txtVuelto.Text = vuelto.ToString();
-                if (vuelto>0)
+                if (vuelto>=0)
                 {
                     return true;
                 }
